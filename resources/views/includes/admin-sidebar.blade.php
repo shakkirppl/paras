@@ -75,7 +75,7 @@
             </a>
             <div class="collapse" id="user">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('user')}}"> User</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('employees')}}"> Employees</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('department')}}">Department</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('designation')}}">Designation</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('van')}}">Van</a></li>

@@ -10,6 +10,7 @@ use App\Http\Controllers\LuckyDrawController;
 use App\Http\Controllers\LuckyDrawGiftesController;
 use App\Http\Controllers\LuckyDrawImageController;
 use App\Http\Controllers\CouponController;
+use App\Http\Controllers\EmployeesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,6 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('store-classifications', StoreClassificationsController::class);
     Route::resource('stores', StoreController::class);
     Route::resource('lucky-draws', LuckyDrawController::class);
+    Route::resource('employees', EmployeesController::class);
     
     Route::prefix('lucky_draws/{lucky_draw}/gifts')->group(function () {
         Route::get('create', [LuckyDrawGiftesController::class, 'create'])->name('lucky_draw_giftes.create');

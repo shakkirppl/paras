@@ -5,11 +5,13 @@ use App\Models\Store;
 use App\Models\StoreTypes;
 use App\Models\StoreClassifications;
 use App\Models\Districts;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
-
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 class StoreController extends Controller
 {
     /**
@@ -107,7 +109,8 @@ class StoreController extends Controller
             return redirect()->back()->with('error', 'Failed to create store: ' . $e->getMessage());
         }
     }
-
+   
+    
     /**
      * Show the form for editing the specified store.
      *
@@ -210,4 +213,5 @@ class StoreController extends Controller
             return redirect()->back()->with('error', 'Failed to delete store: ' . $e->getMessage());
         }
     }
+   
 }
