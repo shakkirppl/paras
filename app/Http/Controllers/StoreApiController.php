@@ -100,11 +100,235 @@ class StoreApiController extends Controller
         }
     }
 
-    public function approved()
+    public function approved(Request $request)
     {
         try {
             // Fetch stores that are complete and active
-            $stores = Store::Complete()->Active()->get();
+            $stores = Store::select('id','code','name','store_types_id','store_classifications_id','logo','status','register_status','user_id')->with('Type','Classification')->Complete()->Active()->User($request->user_id)->paginate(50);
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function approved_count(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::Complete()->Active()->User($request->user_id)->count('id');
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function pending(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::select('id','code','name','store_types_id','store_classifications_id','logo','status','register_status','user_id')->with('Type','Classification')->InActive()->Pending()->User($request->user_id)->paginate(50);
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function pending_count(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::InActive()->Pending()->User($request->user_id)->count('id');
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function terminated(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::select('id','code','name','store_types_id','store_classifications_id','logo','status','register_status','user_id')->with('Type','Classification')->InActive()->Complete()->User($request->user_id)->paginate(50);
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function terminated_count(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::InActive()->Complete()->User($request->user_id)->count('id');
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function rejected(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::select('id','code','name','store_types_id','store_classifications_id','logo','status','register_status','user_id')->with('Type','Classification')->InActive()->Rejected()->User($request->user_id)->paginate(50);
+    
+            // Check if data exists
+            if ($stores->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $stores
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function rejected_count(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $stores = Store::InActive()->Rejected()->User($request->user_id)->cont('id');
     
             // Check if data exists
             if ($stores->isEmpty()) {
@@ -133,14 +357,14 @@ class StoreApiController extends Controller
         }
     }
 
-    public function pending()
+    public function store_classification(Request $request)
     {
         try {
             // Fetch stores that are complete and active
-            $stores = Store::InActive()->Pending()->get();
+            $results = StoreClassifications::get();
     
             // Check if data exists
-            if ($stores->isEmpty()) {
+            if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
                 return response()->json([
                     'status' => 'success',
@@ -153,7 +377,7 @@ class StoreApiController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data retrieved successfully',
-                'data' => $stores
+                'data' => $results
             ], 200);
     
         } catch (\Exception $e) {
@@ -165,14 +389,14 @@ class StoreApiController extends Controller
             ], 500);
         }
     }
-    public function terminated()
+    public function store_type(Request $request)
     {
         try {
             // Fetch stores that are complete and active
-            $stores = Store::InActive()->Complete()->get();
+            $results = StoreTypes::get();
     
             // Check if data exists
-            if ($stores->isEmpty()) {
+            if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
                 return response()->json([
                     'status' => 'success',
@@ -185,7 +409,7 @@ class StoreApiController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data retrieved successfully',
-                'data' => $stores
+                'data' => $results
             ], 200);
     
         } catch (\Exception $e) {
@@ -197,14 +421,14 @@ class StoreApiController extends Controller
             ], 500);
         }
     }
-    public function rejected()
+    public function districts(Request $request)
     {
         try {
             // Fetch stores that are complete and active
-            $stores = Store::InActive()->Rejected()->get();
+            $results = Districts::get();
     
             // Check if data exists
-            if ($stores->isEmpty()) {
+            if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
                 return response()->json([
                     'status' => 'success',
@@ -217,7 +441,7 @@ class StoreApiController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data retrieved successfully',
-                'data' => $stores
+                'data' => $results
             ], 200);
     
         } catch (\Exception $e) {

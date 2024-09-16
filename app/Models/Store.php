@@ -28,4 +28,16 @@ class Store extends Model
     {
          return $query->where('status','inactive');
     }
+    public function scopeUser($query,$user)
+    {
+         return $query->where('user_id',$user);
+    }
+    public function Type(){
+        
+     return $this->hasMany(StoreTypes::class,'id','store_types_id')->select('id','code','name');
+  }
+  public function Classification(){
+        
+     return $this->hasMany(StoreClassifications::class,'id','store_classifications_id')->select('id','code','name');
+  }
 }

@@ -24,4 +24,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/store.pending', [StoreApiController::class, 'pending']);
     Route::get('/store.rejected', [StoreApiController::class, 'rejected']);
     Route::get('/store.terminated', [StoreApiController::class, 'terminated']);
+    Route::get('/store.approved.count', [StoreApiController::class, 'approved_count']);
+    Route::get('/store.pending.count', [StoreApiController::class, 'pending_count']);
+    Route::get('/store.rejected.count', [StoreApiController::class, 'rejected_count']);
+    Route::get('/store.terminated.count', [StoreApiController::class, 'terminated_count']);
+    Route::get('/store.get.classification', [StoreApiController::class, 'store_classification']);
+    Route::get('/store.get.type', [StoreApiController::class, 'store_type']);
+    Route::get('/get.districts', [StoreApiController::class, 'districts']);
 });
