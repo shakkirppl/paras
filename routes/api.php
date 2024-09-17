@@ -21,6 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [ApiAuthController::class, 'user']);
     Route::post('/api-store.store', [StoreApiController::class, 'api_store']);
     Route::get('/store.approved', [StoreApiController::class, 'approved']);
+    Route::get('/store.all', [StoreApiController::class, 'all_store']);
+    Route::get('/store.all.count', [StoreApiController::class, 'all_count']);
     Route::get('/store.pending', [StoreApiController::class, 'pending']);
     Route::get('/store.rejected', [StoreApiController::class, 'rejected']);
     Route::get('/store.terminated', [StoreApiController::class, 'terminated']);
@@ -28,6 +30,11 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/store.pending.count', [StoreApiController::class, 'pending_count']);
     Route::get('/store.rejected.count', [StoreApiController::class, 'rejected_count']);
     Route::get('/store.terminated.count', [StoreApiController::class, 'terminated_count']);
+    Route::get('/store.thisweek', [StoreApiController::class, 'thisweek']);
+    Route::get('/store.thisweek.count', [StoreApiController::class, 'thisweek_count']);
+    Route::get('/store.thismonth', [StoreApiController::class, 'thismonth']);
+    Route::get('/store.thismonth.count', [StoreApiController::class, 'thismonth_count']);
+    Route::get('/store.view', [StoreApiController::class, 'store_view']);
     Route::get('/store.get.classification', [StoreApiController::class, 'store_classification']);
     Route::get('/store.get.type', [StoreApiController::class, 'store_type']);
     Route::get('/get.districts', [StoreApiController::class, 'districts']);
