@@ -39,8 +39,8 @@ class CustomerApiController extends Controller
                 $customers->name = $request->name;
                 $customers->email = $request->email;
                 $customers->mobile = $request->mobile;
-                $store->password = $request->password;
-                $store->save();
+                $customers->password = $request->password;
+                $customers->save();
 
                 $user = User::create([
                     'name' => $request->name,

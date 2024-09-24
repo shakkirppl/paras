@@ -71,7 +71,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/offer.list.by.categories', [OfferAddApiController::class, 'categories_list']);
     Route::get('/offer.list.by.sub_categories', [OfferAddApiController::class, 'sub_categories_list']);
     Route::get('/offer.list.by.offer_categories', [OfferAddApiController::class, 'offer_categories_list']);
-    Route::get('/offer.list.by.offer_tags', [OfferAddApiController::class, 'offer_tags_list']);
     Route::get('/offer.list.by.search', [OfferAddApiController::class, 'search_list']);
+    Route::get('/offer.list.near.you', [OfferAddApiController::class, 'offer_near_you']);
+    Route::get('/offer.list.trending', [OfferAddApiController::class, 'offer_trending']);
+    Route::get('/offer.list.expiring.soon', [OfferAddApiController::class, 'offer_expiring_soon']);
+    Route::get('/offer.single.view', [OfferAddApiController::class, 'offer_single_view']);
+    Route::post('/offer.single.like', [OfferAddApiController::class, 'offer_like']);
+    Route::post('/offer.single.deslike', [OfferAddApiController::class, 'offer_deslike']);
    
 });
