@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\ApiAuthController;
 use App\Http\Controllers\StoreApiController;
 use App\Http\Controllers\OfferApiController;
+use App\Http\Controllers\CustomerApiController;
+use App\Http\Controllers\OfferAddApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,6 +22,14 @@ Route::post('/login', [ApiAuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [ApiAuthController::class, 'logout']);
     Route::get('/user', [ApiAuthController::class, 'user']);
+    // common
+    Route::get('/get.districts', [StoreApiController::class, 'districts']);
+    Route::get('/store.get.classification', [StoreApiController::class, 'store_classification']);
+    Route::get('/store.get.type', [StoreApiController::class, 'store_type']);
+    Route::get('/get.categories', [OfferApiController::class, 'categories']);
+    Route::get('/get.sub-categories', [OfferApiController::class, 'sub_categories']);
+    Route::get('/get.offer.categories', [OfferApiController::class, 'offer_categories']);
+    Route::get('/get.offer.tags', [OfferApiController::class, 'tags']);
     // staff login
     Route::post('/api-store.store', [StoreApiController::class, 'api_store']);
     Route::get('/store.approved', [StoreApiController::class, 'approved']);
@@ -38,15 +48,10 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/store.thismonth.count', [StoreApiController::class, 'thismonth_count']);
     Route::get('/store.view', [StoreApiController::class, 'store_view']);
     Route::get('/store.search', [StoreApiController::class, 'store_search']);
-    Route::get('/store.get.classification', [StoreApiController::class, 'store_classification']);
-    Route::get('/store.get.type', [StoreApiController::class, 'store_type']);
+    
 
     // offer store login
     Route::post('/api-offer.store', [OfferApiController::class, 'offer_store']);
-    Route::get('/get.categories', [OfferApiController::class, 'categories']);
-    Route::get('/get.sub-categories', [OfferApiController::class, 'sub_categories']);
-    Route::get('/get.offer.categories', [OfferApiController::class, 'offer_categories']);
-    Route::get('/get.offer.tags', [OfferApiController::class, 'tags']);
     Route::get('/get.offer.all', [OfferApiController::class, 'offer_all']);
     Route::get('/get.offer.all.count', [OfferApiController::class, 'offer_all_count']);
     Route::get('/get.offer.active', [OfferApiController::class, 'offer_active']);
@@ -59,5 +64,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get.offer.inactive.count', [OfferApiController::class, 'offer_inactive_count']);
     Route::get('/offer.view', [OfferApiController::class, 'offer_view']);
 
-    Route::get('/get.districts', [StoreApiController::class, 'districts']);
+    // public login
+    Route::post('/customer.store', [CustomerApiController::class, 'customer_store']);
+    Route::get('/offer.list', [OfferAddApiController::class, 'all_list']);
+    Route::get('/offer.list.by.district', [OfferAddApiController::class, 'district_list']);
+    Route::get('/offer.list.by.categories', [OfferAddApiController::class, 'categories_list']);
+    Route::get('/offer.list.by.sub_categories', [OfferAddApiController::class, 'sub_categories_list']);
+    Route::get('/offer.list.by.offer_categories', [OfferAddApiController::class, 'offer_categories_list']);
+    Route::get('/offer.list.by.offer_tags', [OfferAddApiController::class, 'offer_tags_list']);
+    Route::get('/offer.list.by.search', [OfferAddApiController::class, 'search_list']);
+   
 });

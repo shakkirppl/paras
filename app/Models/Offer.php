@@ -4,10 +4,56 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Carbon\Carbon;
 class Offer extends Model
 {
     use HasFactory;
+    public function scopeRunning($query)
+    {
+        $today = Carbon::now()->toDateString();
+    
+        return $query->where('status', 'active')
+                     ->where('verified', 'yes')
+                     ->where('start_date', '<=', $today)
+                     ->where('end_date', '>=', $today)
+                     ->where('store_subscription_end_date', '>=', $today);
+    }
+    public function scopeDistrict($query,$value)
+    {
+      return $query->where(function($query)use ($value) {
+        if ($value) {
+            $query->where('district_id', $value);
+        }
+         });
+
+    }
+    public function scopeCategory($query,$value)
+    {
+      return $query->where(function($query)use ($value) {
+        if ($value) {
+            $query->where('categories_id', $value);
+        }
+         });
+
+    }
+    public function scopeSubCategory($query,$value)
+    {
+      return $query->where(function($query)use ($value) {
+        if ($value) {
+            $query->where('sub_categories_id', $value);
+        }
+         });
+
+    }
+    public function scopeOfferCategory($query,$value)
+    {
+      return $query->where(function($query)use ($value) {
+        if ($value) {
+            $query->where('offer_categories_id', $value);
+        }
+         });
+
+    }
     public function scopeActive($query)
     {
          return $query->where('status','active');
