@@ -11,6 +11,10 @@ use App\Http\Controllers\LuckyDrawGiftesController;
 use App\Http\Controllers\LuckyDrawImageController;
 use App\Http\Controllers\CouponController;
 use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductAttributeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,6 +67,10 @@ Route::middleware('auth')->group(function () {
     Route::post('lucky_draws/{lucky_draw}/images', [LuckyDrawImageController::class, 'store'])->name('lucky_draw_images.store');
     Route::delete('lucky_draws/{lucky_draw}/images/{image}', [LuckyDrawImageController::class, 'destroy'])->name('lucky-draw-images.destroy');
     Route::resource('coupons', CouponController::class);
+    Route::resource('category', CategoryController::class);
+    Route::resource('sub-category', SubCategoryController::class);
+    Route::resource('brand', BrandController::class);
+    Route::resource('product-attributes', ProductAttributeController::class);
 
 });
 

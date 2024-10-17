@@ -7,6 +7,7 @@ use App\Http\Controllers\StoreApiController;
 use App\Http\Controllers\OfferApiController;
 use App\Http\Controllers\CustomerApiController;
 use App\Http\Controllers\OfferAddApiController;
+use App\Http\Controllers\ProductCreateApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -26,11 +27,17 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get.districts', [StoreApiController::class, 'districts']);
     Route::get('/store.get.classification', [StoreApiController::class, 'store_classification']);
     Route::get('/store.get.type', [StoreApiController::class, 'store_type']);
-    Route::get('/get.categories', [OfferApiController::class, 'categories']);
-    Route::get('/get.sub-categories', [OfferApiController::class, 'sub_categories']);
     Route::get('/get.offer.categories', [OfferApiController::class, 'offer_categories']);
     Route::get('/get.offer.tags', [OfferApiController::class, 'tags']);
+    Route::get('/get.categories', [ProductCreateApiController::class, 'categories']);
+    Route::get('/get.sub-categories', [ProductCreateApiController::class, 'sub_categories']);
+    Route::get('/get.brands', [ProductCreateApiController::class, 'brands']);
+    Route::get('/get.attributes.color', [ProductCreateApiController::class, 'color_attributes']);
+    Route::get('/get.attributes.size', [ProductCreateApiController::class, 'size_attributes']);
+    Route::post('/product.store', [ProductCreateApiController::class, 'store']);
     // staff login
+
+
     Route::post('/api-store.store', [StoreApiController::class, 'api_store']);
     Route::get('/store.approved', [StoreApiController::class, 'approved']);
     Route::get('/store.all', [StoreApiController::class, 'all_store']);

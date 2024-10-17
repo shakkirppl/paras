@@ -20,19 +20,10 @@
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('store-classifications')}}"> Store Classification</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('stores')}}"> Stores</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('lucky-draws')}}">Lucky Draws</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('category')}}">Category</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('sub-category')}}">Sub Category</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('brand')}}">Brand</a></li>
-           
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('unit')}}">Unit</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('tax')}}">Tax</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('return-type')}}">Return Type</a></li>
-         
-                 <li class="nav-item"> <a class="nav-link" href="{{URL::to('expense-master')}}">Expense Master</a></li>
-                 <li class="nav-item"> <a class="nav-link" href="{{URL::to('visit-reason')}}">Visit Reason</a></li>
-
-                 <li class="nav-item"> <a class="nav-link" href="{{URL::to('process-pending-data')}}">Process</a></li>
-                 
-             
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('product-attributes')}}">Product Attributes</a></li>
               </ul>
             </div>
             

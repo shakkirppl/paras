@@ -5,9 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offer;
 use App\Models\OfferCategory;
 use App\Models\OfferDetails;
-use App\Models\Store;
-use App\Models\Categories;
-use App\Models\SubCategories;
+
 use App\Models\AddTags;
 use App\Models\Coupens;
 use Illuminate\Http\Request;
@@ -463,70 +461,7 @@ class OfferApiController extends Controller
         }
         
     }
-    public function categories(Request $request)
-    {
-        try {
-            // Fetch stores that are complete and active
-            $results = Categories::Active()->get();
-    
-            // Check if data exists
-            if ($results->isEmpty()) {
-                // Return 'no data found' response if the collection is empty
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'No data found',
-                    'data' => []
-                ], 200);
-            }
-    
-            // Return data if it exists
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Data retrieved successfully',
-                'data' => $results
-            ], 200);
-    
-        } catch (\Exception $e) {
-            // Handle exceptions and return error response
-            return response()->json([
-                'status' => 'error',
-                'message' => 'An error occurred while fetching data',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
-    public function sub_categories(Request $request)
-    {
-        try {
-            // Fetch stores that are complete and active
-            $results = SubCategories::Active()->where('categories_id',$request->categories_id)->get();
-    
-            // Check if data exists
-            if ($results->isEmpty()) {
-                // Return 'no data found' response if the collection is empty
-                return response()->json([
-                    'status' => 'success',
-                    'message' => 'No data found',
-                    'data' => []
-                ], 200);
-            }
-    
-            // Return data if it exists
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Data retrieved successfully',
-                'data' => $results
-            ], 200);
-    
-        } catch (\Exception $e) {
-            // Handle exceptions and return error response
-            return response()->json([
-                'status' => 'error',
-                'message' => 'An error occurred while fetching data',
-                'error' => $e->getMessage()
-            ], 500);
-        }
-    }
+  
     public function offer_categories(Request $request)
     {
         try {
