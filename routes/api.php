@@ -35,6 +35,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get.attributes.color', [ProductCreateApiController::class, 'color_attributes']);
     Route::get('/get.attributes.size', [ProductCreateApiController::class, 'size_attributes']);
     Route::post('/product.store', [ProductCreateApiController::class, 'store']);
+    Route::post('/productUnit.store', [ProductCreateApiController::class, 'productUnitStore']);
     // staff login
 
 
