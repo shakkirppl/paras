@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categories;
+use App\Models\SubCategories;
 use DB;
 use App\Helper\File;
 class CategoryController extends Controller
@@ -100,4 +100,12 @@ class CategoryController extends Controller
           }
       
     }
+    public function getSubCategories(Request $request)
+{
+    $subcategories = SubCategories::where('categories_id', $request->category_id)->get();
+
+    return response()->json([
+        'subcategories' => $subcategories
+    ]);
+}
 }

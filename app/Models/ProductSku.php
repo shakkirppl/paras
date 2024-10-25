@@ -7,5 +7,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductSku extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    protected $fillable = [
+        'productUnitID', 'product_id', 'size_attributes_id', 'color_attributes_id', 'sku', 
+        'price', 'offer_price', 'descount_percentage', 'stock', 'user_id', 'store_id', 'base_unit', 'image'
+    ];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'product_id');
+    }
+    public function color()
+    {
+        return $this->hasMany(ProductAttribute::class,'id', 'color_attributes_id');
+    }
+
+    public function size()
+    {
+        return $this->hasMany(ProductAttribute::class,'id', 'size_attributes_id');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class, 'product_sku_id');
+    }
 }

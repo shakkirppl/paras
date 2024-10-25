@@ -31,15 +31,15 @@
           </li>
 
                     <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#transaction" aria-expanded="false" aria-controls="charts">
+            <a class="nav-link" data-toggle="collapse" href="#products" aria-expanded="false" aria-controls="charts">
             <i class="mdi mdi-group menu-icon"></i> 
-              <span class="menu-title">Transaction</span>
+              <span class="menu-title">Products</span>
               <i class="menu-arrow"></i>
             </a>
-            <div class="collapse" id="transaction">
+            <div class="collapse" id="products">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-expense')}}"> Expense</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-return')}}"> Return</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('products/create')}}"> Create</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('products')}}"> List</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('sales-change')}}"> Sales Change</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-offload-request')}}">Offload Request</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-dayclose-aprovel')}}">Day Close </a></li>

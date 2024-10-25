@@ -7,5 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class ProductImages extends Model
 {
-    use HasFactory;
+    use HasFactory,SoftDeletes;
+    protected $fillable = ['productUnitID', 'product_id', 'image'];
 }
