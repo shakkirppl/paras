@@ -21,7 +21,7 @@ class StoreApiController extends Controller
     use File;
     public function api_store(Request $request)
     {
-        // return $request->all();
+        //  return $request->all();
         // Validation
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -43,7 +43,7 @@ class StoreApiController extends Controller
                 'errors' => $validator->errors() // This will include the details of which fields failed
             ], 422);
         }
-        if( $file = $request->file('image') ) {
+        if( $file = $request->file('logo') ) {
             $path = 'uploads/store';
             $image = $this->file($file,$path,150,150);
         }else{$image='defalut.jpg';}

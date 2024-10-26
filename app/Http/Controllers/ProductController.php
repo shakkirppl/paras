@@ -18,6 +18,120 @@ class ProductController extends Controller
 {
     use File;
      // Function to show the product creation form
+     public function temp_products(Request $request)
+     { 
+        try {
+            $results = TempProduct::select('name','product_code','model','brand_id','category_id','sub_category_id')->with('category','subCategory','brand')->where('name', 'like','%'. $request->name . '%')->get();
+            
+            if ($results->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $results
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+     }
+     public function temp_category_products(Request $request)
+     { 
+        try {
+            $results = TempProduct::where('name', 'like','%'. $request->name . '%')->where('category_id',$request->category_id)->get();
+            
+            if ($results->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $results
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+     }
+     public function temp_subcategory_products(Request $request)
+     { 
+        try {
+            $results = TempProduct::where('name', 'like','%'. $request->name . '%')->where('sub_category_id',$request->sub_category_id)->get();
+            
+            if ($results->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $results
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+     }
+     public function selected_temp_products(Request $request)
+     { 
+        
+        try {
+            $results = TempProduct::with('skus')->find($request->id);
+
+            if (is_null($results)) {
+                // Return 'no data found' response if no result is found
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $results
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+     }
+     
      public function index(Request $request)
      { 
         $products=TempProduct::get();
