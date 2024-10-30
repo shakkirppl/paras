@@ -57,7 +57,24 @@
             
      
           </li>
-          
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#offer" aria-expanded="false" aria-controls="charts">
+            <i class="mdi mdi-group menu-icon"></i> 
+              <span class="menu-title">Offer </span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="offer">
+              <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('offer-adds')}}"> Offer Adds</a></li>
+
+
+             
+              </ul>
+            </div>
+            
+     
+          </li>
+
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false" aria-controls="charts">
             <i class="mdi mdi-group menu-icon"></i> 

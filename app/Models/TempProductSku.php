@@ -24,13 +24,17 @@ class TempProductSku extends Model
   // Relationship for Size Attribute
   public function size()
   {
-      return $this->belongsTo(ProductAttribute::class, 'size_attributes_id');
+      return $this->belongsTo(ProductAttribute::class, 'size_attributes_id')->select('id','type','value');
   }
 
   // Relationship for Color Attribute
   public function color()
   {
-      return $this->belongsTo(ProductAttribute::class, 'color_attributes_id');
+      return $this->belongsTo(ProductAttribute::class, 'color_attributes_id')->select('id','type','value');
   }
+  public function images()
+    {
+        return $this->hasMany(TempProductImages::class, 'product_sku_id');
+    }
 
 }

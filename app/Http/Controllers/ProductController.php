@@ -6,9 +6,11 @@ use App\Models\Brand;
 use App\Models\Categories;
 use App\Models\SubCategories;
 use App\Models\TempProduct;
+use App\Models\Product;
 use App\Models\TempProductSku;
 use App\Models\TempProductImages;
 use App\Models\ProductAttribute;
+use App\Models\OfferAdds;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Helper\File;
@@ -21,7 +23,8 @@ class ProductController extends Controller
      public function temp_products(Request $request)
      { 
         try {
-            $results = TempProduct::select('name','product_code','model','brand_id','category_id','sub_category_id')->with('category','subCategory','brand')->where('name', 'like','%'. $request->name . '%')->get();
+            $results = TempProduct::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
+            ->with('category','subCategory','brand','skusBase')->where('name', 'like','%'. $request->name . '%')->get();
             
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -49,7 +52,8 @@ class ProductController extends Controller
      public function temp_category_products(Request $request)
      { 
         try {
-            $results = TempProduct::where('name', 'like','%'. $request->name . '%')->where('category_id',$request->category_id)->get();
+            $results = TempProduct::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
+            ->with('category','subCategory','brand','skusBase')->where('name', 'like','%'. $request->name . '%')->where('category_id',$request->category_id)->get();
             
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -77,7 +81,8 @@ class ProductController extends Controller
      public function temp_subcategory_products(Request $request)
      { 
         try {
-            $results = TempProduct::where('name', 'like','%'. $request->name . '%')->where('sub_category_id',$request->sub_category_id)->get();
+            $results = TempProduct::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
+            ->with('category','subCategory','brand','skusBase')->where('name', 'like','%'. $request->name . '%')->where('sub_category_id',$request->sub_category_id)->get();
             
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -106,8 +111,8 @@ class ProductController extends Controller
      { 
         
         try {
-            $results = TempProduct::with('skus')->find($request->id);
-
+            $results = TempProduct::with('category','subCategory','brand','skusBase')->find($request->id);
+            $skus=TempProductSku::with('size','color','images')->where('product_id',$results->id)->get();
             if (is_null($results)) {
                 // Return 'no data found' response if no result is found
                 return response()->json([
@@ -121,7 +126,8 @@ class ProductController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data retrieved successfully',
-                'data' => $results
+                'data' => $results,
+                'attribute'=>$skus,
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
@@ -466,5 +472,21 @@ class ProductController extends Controller
        
         return view('products.edit', compact('products','brands','categories','subCategories'));
     }
+
+    public function getSubCategories(Request $request)
+{
+    $subCategories = SubCategories::where('categories_id', $request->category_id)->get();
+    return response()->json(['subcategories' => $subCategories]);
+}
+
+public function getProductsBySubCategory(Request $request)
+{
+    $masterId=$request->master_id;
+    $OfferAdds=OfferAdds::find($masterId);
+    $products = Product::where('sub_category_id', $request->sub_category_id)->where('store_id',$OfferAdds->store_id)->get();
+    $html = view('offer-adds.product-list', compact('products','OfferAdds'))->render();
+    return response()->json(['html' => $html]);
+}
+
 
 }

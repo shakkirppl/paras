@@ -16,6 +16,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OfferAddsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -73,6 +74,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('brand', BrandController::class);
     Route::resource('product-attributes', ProductAttributeController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('offer-adds', OfferAddsController::class);
+    Route::get('offer-adds.view/{id}', [OfferAddsController::class, 'show'])->name('offer-adds.view');
+    
+    Route::post('offer-adds-product.store', [OfferAddsController::class, 'offer_adds_store'])->name('offer-adds-product.store');
+    Route::get('offer-adds.remove/{id}', [OfferAddsController::class, 'show'])->name('offer-adds.remove');
+    
     Route::post('products-sku.store', [ProductController::class, 'storeSku'])->name('products-sku.store');
     Route::delete('product-sku/{id}', [ProductController::class, 'destroySku'])->name('product-sku.destroy');
     Route::post('products-update', [ProductController::class, 'updateProduct'])->name('products.update');
@@ -84,6 +91,10 @@ Route::middleware('auth')->group(function () {
     Route::get('products.show/{id}', [ProductController::class, 'show']);
     Route::get('products.image/{id}', [ProductController::class, 'image']);
     Route::get('categories/get-subcategories', [CategoryController::class, 'getSubCategories'])->name('categories.getSubCategories');
+    Route::get('/get-subcategories', [ProductController::class, 'getSubCategories'])->name('getSubCategories');
+
+// Route to get products by sub-category
+    Route::get('/get-products-by-subcategory', [ProductController::class, 'getProductsBySubCategory'])->name('getProductsBySubCategory');
 });
 
 require __DIR__.'/auth.php';

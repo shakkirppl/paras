@@ -9,6 +9,7 @@ use App\Http\Controllers\CustomerApiController;
 use App\Http\Controllers\OfferAddApiController;
 use App\Http\Controllers\ProductCreateApiController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreProductController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -41,6 +42,13 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get.temp.sub-category.product', [ProductController::class, 'temp_subcategory_products']);
     Route::get('/get.temp.product', [ProductController::class, 'temp_products']);
     Route::get('/get.selected.temp.product', [ProductController::class, 'selected_temp_products']);
+    Route::post('/add.new.product', [StoreProductController::class, 'add_new_product']);
+
+    Route::get('/get.offer.adds-section1', [OfferApiController::class, 'offer_adds_section1']);
+    Route::get('/get.offer.adds-section2', [OfferApiController::class, 'offer_adds_section2']);
+    Route::get('/get.offer.adds-section3', [OfferApiController::class, 'offer_adds_section3']);
+    Route::get('/get.offer.adds-section4', [OfferApiController::class, 'offer_adds_section4']);
+    Route::get('/get.offer.adds-section5', [OfferApiController::class, 'offer_adds_section5']);
     // staff login
 
 

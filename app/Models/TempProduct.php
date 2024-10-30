@@ -17,7 +17,11 @@ class TempProduct extends Model
         ->select('temp_product_skus.*');
          
      }
-
+     public function skusBase(){
+        return $this->hasMany('App\Models\TempProductSku', 'product_id', 'id')
+                    ->where('base_unit', 'Yes')
+                    ->select('id', 'image', 'product_id'); // Make sure to include 'product_id' in the select to match the relationship
+    }
     public function images()
     {
         return $this->hasMany(TempProductImages::class, 'product_id');
