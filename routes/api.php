@@ -10,6 +10,8 @@ use App\Http\Controllers\OfferAddApiController;
 use App\Http\Controllers\ProductCreateApiController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreProductController;
+use App\Http\Controllers\HomeApiController;
+use App\Http\Controllers\CategoryApiController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -43,12 +45,34 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get.temp.product', [ProductController::class, 'temp_products']);
     Route::get('/get.selected.temp.product', [ProductController::class, 'selected_temp_products']);
     Route::post('/add.new.product', [StoreProductController::class, 'add_new_product']);
-
+// home
     Route::get('/get.offer.adds-section1', [OfferApiController::class, 'offer_adds_section1']);
     Route::get('/get.offer.adds-section2', [OfferApiController::class, 'offer_adds_section2']);
     Route::get('/get.offer.adds-section3', [OfferApiController::class, 'offer_adds_section3']);
     Route::get('/get.offer.adds-section4', [OfferApiController::class, 'offer_adds_section4']);
     Route::get('/get.offer.adds-section5', [OfferApiController::class, 'offer_adds_section5']);
+    Route::get('/get.home.categories', [HomeApiController::class, 'categories']);
+    Route::get('/get.home.products.section1', [HomeApiController::class, 'home_products_section1']);
+    Route::get('/get.home.products.section2', [HomeApiController::class, 'home_products_section2']);
+    Route::get('/get.home.products.section3', [HomeApiController::class, 'home_products_section3']);
+    Route::get('/get.home.products.section4', [HomeApiController::class, 'home_products_section4']);
+    Route::get('/get.home.categories.products', [HomeApiController::class, 'category_products']);
+    Route::get('/get.home.subcategories.products', [HomeApiController::class, 'subcategory_products']);
+    Route::get('/get.home.selected.products', [HomeApiController::class, 'selected_products']);
+    Route::get('/get.home.search.products', [HomeApiController::class, 'search_products']);
+    Route::get('/get.home.upto.40', [HomeApiController::class, 'upto_40_products']);
+    Route::get('/get.home.upto.50', [HomeApiController::class, 'upto_50_products']);
+    Route::get('/get.home.upto.60', [HomeApiController::class, 'upto_60_products']);
+
+    // category
+    Route::get('/get.category.products.section1', [CategoryApiController::class, 'category_products_section1']);
+    Route::get('/get.category.products.section2', [CategoryApiController::class, 'category_products_section2']);
+    Route::get('/get.category.products.section3', [CategoryApiController::class, 'category_products_section3']);
+    Route::get('/get.category.products.section4', [CategoryApiController::class, 'category_products_section4']);
+    Route::get('/get.category.upto.40', [CategoryApiController::class, 'upto_40_products']);
+    Route::get('/get.category.upto.50', [CategoryApiController::class, 'upto_50_products']);
+    Route::get('/get.category.upto.60', [CategoryApiController::class, 'upto_60_products']);
+    
     // staff login
 
 

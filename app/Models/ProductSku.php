@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\ProductImage;
 class ProductSku extends Model
 {
     use HasFactory,SoftDeletes;
@@ -29,6 +30,6 @@ class ProductSku extends Model
 
     public function images()
     {
-        return $this->hasMany(ProductImage::class, 'product_sku_id');
+        return $this->hasMany(ProductImage::class, 'productUnitID');
     }
 }

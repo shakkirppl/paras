@@ -15,12 +15,12 @@ class Product extends Model
     ];
 
     public function skus(){
-        return $this->hasMany('App\Models\TempProductSku','product_id')
-        ->select('temp_product_skus.*');
+        return $this->hasMany('App\Models\ProductSku','product_id')
+        ->select('product_skus.*');
          
      }
      public function skusBase(){
-        return $this->hasMany('App\Models\TempProductSku', 'product_id', 'id')
+        return $this->hasMany('App\Models\ProductSku', 'product_id', 'id')
                     ->where('base_unit', 'Yes')
                     ->select('id', 'image', 'product_id'); // Make sure to include 'product_id' in the select to match the relationship
     }
