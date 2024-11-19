@@ -21,7 +21,7 @@
 
           <div class="row">
           <div class="col-md-6 heading">
-                             <a href="{{ route('products') }}" class="backicon"><i class="mdi mdi-backburger"></i></a>
+                             <a href="{{ url('products') }}" class="backicon"><i class="mdi mdi-backburger"></i></a>
                         </div>
             <br>
           </div>

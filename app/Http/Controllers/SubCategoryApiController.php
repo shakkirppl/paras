@@ -7,7 +7,7 @@ use App\Models\Categories;
 use App\Models\Product;
 use App\Models\ProductSku;
 use App\Models\ProductImage;
-class CategoryApiController extends Controller
+class SubCategoryApiController extends Controller
 {
     //
   
@@ -15,7 +15,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty
@@ -44,7 +44,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty
@@ -73,7 +73,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty
@@ -102,7 +102,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty
@@ -132,7 +132,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->where('offer_adds_id',10)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->where('offer_adds_id',10)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty
@@ -161,7 +161,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->where('offer_adds_id',11)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->where('offer_adds_id',11)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty
@@ -190,7 +190,7 @@ class CategoryApiController extends Controller
     { 
        try {
            $results = Product::select('id','name','product_code','model','brand_id','category_id','sub_category_id')
-           ->with('category','subCategory','brand','skusBase')->where('category_id',$request->category_id)->where('offer_adds_id',12)->get();
+           ->with('category','subCategory','brand','skusBase')->where('sub_category_id',$request->sub_category_id)->where('offer_adds_id',12)->get();
            
            if ($results->isEmpty()) {
                // Return 'no data found' response if the collection is empty

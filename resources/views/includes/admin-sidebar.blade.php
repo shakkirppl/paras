@@ -18,7 +18,7 @@
               <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('store-type')}}"> Store Type</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('store-classifications')}}"> Store Classification</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('stores')}}"> Stores</a></li>
+              <!-- <li class="nav-item"> <a class="nav-link" href="{{URL::to('stores')}}"> Stores</a></li> -->
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('lucky-draws')}}">Lucky Draws</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('category')}}">Category</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('sub-category')}}">Sub Category</a></li>
@@ -40,16 +40,7 @@
               <ul class="nav flex-column sub-menu">
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('products/create')}}"> Create</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('products')}}"> List</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('sales-change')}}"> Sales Change</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-offload-request')}}">Offload Request</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-dayclose-aprovel')}}">Day Close </a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('van-transfar-pending')}}">Van Transfar</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('payment-voucher')}}">Payment Voucher</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('sales-order-pending')}}">Sales Order</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('sales-schedule-pending')}}">Pending Schedule</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('pick-list-pending')}}">Pick List</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('picklist-report')}}">Pick List Report</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('delivery-loading-pending')}}"> Delivery Loading</a></li>
+
              
 
               </ul>
@@ -83,14 +74,7 @@
             </a>
             <div class="collapse" id="user">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('employees')}}"> Employees</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('department')}}">Department</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('designation')}}">Designation</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('van')}}">Van</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('route-assign')}}">Route Assign</a></li>
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('schedule')}}">Schedule</a></li>
-
-             
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('employees')}}"> Employees</a></li>   
               </ul>
             </div>
             
@@ -111,15 +95,7 @@
             </a>
             <div class="collapse" id="collection_report">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('vansale-report')}}">Sales</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('payment-collection-report')}}">Collection Report</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('van-salesorder-report')}}">Sales Order</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('van-salesreturn-report')}}">Sales Return</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('expense-report')}}">Expense Report</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('day-close-report')}}">Day Close</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('payment-voucher-report')}}">Payment Voucher</a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('vanstock-request-report')}}">Van Stock  Request </a></li>
-                <li class="nav-item"> <a class="nav-link" href="{{URL::to('offload-request-report')}}">Offload  Request </a></li>
+               
               </ul>
             </div>
      
