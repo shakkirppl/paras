@@ -140,7 +140,7 @@ class ProductController extends Controller
      
      public function index(Request $request)
      { 
-        $products=TempProduct::get();
+        $products=TempProduct::with('category','subCategory','brand')->get();
          return view('products.index', compact('products'));
      }
     // Function to show the product creation form

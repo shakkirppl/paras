@@ -98,7 +98,7 @@
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label required"> Model</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="Model" name="model"  required="true"  value="{{old('model')}}" />
+                            <input type="text" class="form-control" placeholder="Model" name="model"    value="{{old('model')}}" />
                           </div>
                         </div>
                       </div>
@@ -116,7 +116,7 @@
   <div class="form-group row">
     <label class="col-sm-2 col-form-label required">Description 1</label>
     <div class="col-sm-9">
-      <textarea class="form-control" id="summary" name="summary" required>{{ old('summary') }}</textarea>
+      <textarea class="form-control" id="summary" name="summary" >{{ old('summary') }}</textarea>
     </div>
   </div>
 </div>
@@ -166,7 +166,7 @@
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label required"> SKU</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="SKU" name="sku"  required="true"  value="{{old('sku')}}" />
+                            <input type="text" class="form-control" placeholder="SKU" name="sku"   value="{{old('sku')}}" />
                           </div>
                         </div>
                       </div>

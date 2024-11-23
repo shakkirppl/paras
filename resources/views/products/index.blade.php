@@ -43,10 +43,11 @@
         <tbody>
             @foreach($products as $product)
             <tr>
+            
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->product_code }}</td>
-                <td>{{ $product->category->name ?? 'N/A' }}</td>
-                <td>{{ $product->brand->name ?? 'N/A' }}</td>
+                <td> @foreach($product->category as $cate) {{ $cate->name ?? 'N/A' }}  @endforeach</td>
+                <td>@foreach($product->brand as $brn) {{ $brn->name ?? 'N/A' }}  @endforeach </td>
                 <td>
                     <a href="{{ url('products.addon', $product->id) }}" class="btn btn-primary btn-sm">Addon</a>
                     <a href="{{ url('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>

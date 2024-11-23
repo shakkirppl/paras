@@ -21,7 +21,7 @@
 
           <div class="row">
           <div class="col-md-6 heading">
-                             <a href="{{ route('products') }}" class="backicon"><i class="mdi mdi-backburger"></i></a>
+                             <a href="{{ url('products') }}" class="backicon"><i class="mdi mdi-backburger"></i></a>
                         </div>
             <br>
           </div>
@@ -100,7 +100,7 @@
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label required"> SKU</label>
                           <div class="col-sm-9">
-                            <input type="text" class="form-control" placeholder="SKU" name="sku"  required="true"  value="{{old('sku')}}" />
+                            <input type="text" class="form-control" placeholder="SKU" name="sku"    value="{{old('sku')}}" />
                           </div>
                         </div>
                       </div>

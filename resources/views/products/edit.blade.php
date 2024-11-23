@@ -112,7 +112,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label required"> Model</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" placeholder="Model" name="model" required value="{{ old('model', $products->model) }}" />
+                    <input type="text" class="form-control" placeholder="Model" name="model"  value="{{ old('model', $products->model) }}" />
                 </div>
             </div>
         </div>
@@ -132,7 +132,7 @@
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label required">Summary</label>
                 <div class="col-sm-9">
-                    <textarea class="form-control" id="summary" name="summary" required>{{ old('summary', $products->summary) }}</textarea>
+                    <textarea class="form-control" id="summary" name="summary" >{{ old('summary', $products->summary) }}</textarea>
                 </div>
             </div>
         </div>

@@ -75,13 +75,16 @@ class CategoryController extends Controller
             'status' => 'required|string',
         ]);
         try {
+           
             if( $file = $request->file('image') ) {
                 $path = 'uploads/category';
                 $image = $this->file($file,$path,150,150);
             }else{$image=$category->image;}
             DB::transaction(function () use ($request,$category,$image) {
-                $request['image']=$image;
-                $category->update($request->all());
+                $category->name=$request->name;
+                $category->image=$image;
+                $category->status=$request->status;
+                $category->save();
         }); 
        return redirect()->route('category.index')->with('success','Category updated successfully');
     } catch (\Exception $e) {
