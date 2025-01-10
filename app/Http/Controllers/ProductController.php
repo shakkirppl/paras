@@ -147,11 +147,11 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         // Fetch Brands and Categories for dropdowns
-        $brands = Brand::all(); 
-        $categories = Categories::all();
+        $brands = Brand::orderBy('name', 'asc')->get(); 
+        $categories = Categories::orderBy('name', 'asc')->get();
 
-        $color = ProductAttribute::where('type','color')->get(); 
-        $size = ProductAttribute::where('type','size')->get(); 
+        $color = ProductAttribute::where('type','color')->orderBy('value', 'asc')->get(); 
+        $size = ProductAttribute::where('type','size')->orderBy('value', 'asc')->get(); 
     
         return view('products.create', compact('brands', 'categories','color','size'));
     }
@@ -392,8 +392,8 @@ class ProductController extends Controller
     public function addon($id)
     {
         $products=TempProduct::find($id);
-        $color = ProductAttribute::where('type','color')->get(); 
-        $size = ProductAttribute::where('type','size')->get(); 
+        $color = ProductAttribute::where('type','color')->orderBy('value', 'asc')->get(); 
+        $size = ProductAttribute::where('type','size')->orderBy('value', 'asc')->get(); 
         return view('products.addon', compact('products','color','size'));
     }
     public function destroySku($id) 
