@@ -78,5 +78,61 @@
 
 <p>Storage Permission: The App requires access to your device's storage to download and store promotional flyers and other relevant content. This enables offline access to app features and content, enhancing usability and convenience. By granting these permissions, you allow the App to deliver its full functionality and personalized content. You can manage or revoke these permissions at any time through your device's settings, although doing so may affect the App's performance and capability to provide certain features.</p>
 <h1>User Consent and Privacy:</h1>
-</body>
+
+<p>Your privacy is paramount. The App is committed to ensuring the confidentiality and integrity of your data. By using the App, you agree to the terms outlined in this section and the Privacy Policy.</p>
+
+<h1>Privacy Policy</h1>
+    </p>The collection, use of your Personal Information by the App Provider is governed by its Privacy Policy, available at http://www.paresworld.com/privacy</p>
+        <h1>Termination & Modification</h1>
+        <p>Updates to this License Agreement will be made without notice and will be accessible through the Licensed Application. You are therefore encouraged to review the terms and conditions of this License Agreement regularly.</p>
+
+        <p>The License is effective until terminated by the App Provider or You. On termination, You shall cease to use the Licensed Application and destroy all copies of the Licensed Application or any information downloaded or obtained from the Licensed Application.</p>
+
+
+        <h2>Your Representation and Warranties</h2>
+    <ul>
+        <li>You will not use the Licensed Application or service for anything unlawful or prohibited by the terms and conditions.</li>
+        <li>You will not violate or attempt to violate the security of the Licensed Application or interfere with its proper functioning.</li>
+        <li>All material or content you post is true, accurate, and not owned or confidential to any other person.</li>
+        <li>You agree that the use of the Licensed Application is at your sole risk and that the content is provided on an "As is" basis.</li>
+        <li>App Provider disclaims all warranties and liabilities related to the Licensed Application or its content.</li>
+        <li>You are legally entitled to use the Licensed Application and are not impersonating another person or providing false information.</li>
+    </ul>
+    
+    <h2>Indemnity</h2>
+    <p>You agree to indemnify, defend, and hold harmless the App Provider and associated parties from any claims, actions, demands, liabilities, damages, losses, costs, and expenses, including legal fees, arising from your use of the Licensed Application.</p>
+    <p>This clause shall survive the termination of this License Agreement.</p>
+    
+    <h2>Eligibility</h2>
+    <p>You must be at least 18 years old to use our services. Businesses must have legal authority to advertise on behalf of their entity.</p>
+    
+    <h2>Payment and Billing</h2>
+    <ul>
+        <li>Advertisers must pay for services as per the chosen pricing plan.</li>
+        <li>Payments are non-refundable unless otherwise stated.</li>
+        <li>Failure to pay may result in suspension or termination of services.</li>
+    </ul>
+    
+    <h2>Intellectual Property</h2>
+    <ul>
+        <li>Users retain ownership of their advertisements but grant us a non-exclusive, worldwide license to display the content on our platform.</li>
+        <li>Unauthorized use of any content from our app is strictly prohibited.</li>
+    </ul>
+    
+    <h2>Limitation of Liability</h2>
+    <p>We do not guarantee the performance of any advertisement. We are not liable for any damages, loss of revenue, or business disruptions arising from the use of our platform.</p>
+    
+    <h2>Termination of Services</h2>
+    <p>We reserve the right to suspend or terminate any account violating these terms without prior notice.</p>
+    
+    <h2>Modifications</h2>
+    <p>We may update these terms at any time. Continued use of our platform constitutes acceptance of the revised terms.</p>
+    
+    <h2>Governing Law</h2>
+    <p>These Terms and Conditions are governed by the laws of [Jurisdiction].</p>
+    
+    <h2>Contact Information</h2>
+    <p>For inquiries or concerns, contact us at <a href="mailto:worldpares@gmail.com">worldpares@gmail.com</a>.</p>
+
+    </body>
 </html>
