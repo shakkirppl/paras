@@ -17,6 +17,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OfferAddsController;
+use App\Http\Controllers\OtherTransactionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -96,5 +97,8 @@ Route::middleware('auth')->group(function () {
 // Route to get products by sub-category
     Route::get('/get-products-by-subcategory', [ProductController::class, 'getProductsBySubCategory'])->name('getProductsBySubCategory');
 });
+Route::get('/privacy-policy', [OtherTransactionController::class, 'privacy_policy'])->name('privacy-policy');
+Route::get('/terms-conditions', [OtherTransactionController::class, 'terms_conditions'])->name('terms-conditions');
+Route::get('/support', [OtherTransactionController::class, 'support'])->name('support');
 
 require __DIR__.'/auth.php';
