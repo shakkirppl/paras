@@ -117,32 +117,32 @@ Route::middleware('auth:sanctum')->group(function () {
     
 
     // offer store login
-    // Route::post('/api-offer.store', [OfferApiController::class, 'offer_store']);
-    // Route::get('/get.offer.all', [OfferApiController::class, 'offer_all']);
-    // Route::get('/get.offer.all.count', [OfferApiController::class, 'offer_all_count']);
-    // Route::get('/get.offer.active', [OfferApiController::class, 'offer_active']);
-    // Route::get('/get.offer.active.count', [OfferApiController::class, 'offer_active_count']);
-    // Route::get('/get.offer.pending', [OfferApiController::class, 'offer_pending']);
-    // Route::get('/get.offer.pending.count', [OfferApiController::class, 'offer_pending_count']);
-    // Route::get('/get.offer.rejected', [OfferApiController::class, 'offer_rejected']);
-    // Route::get('/get.offer.rejected.count', [OfferApiController::class, 'offer_rejected_count']);
-    // Route::get('/get.offer.inactive', [OfferApiController::class, 'offer_inactive']);
-    // Route::get('/get.offer.inactive.count', [OfferApiController::class, 'offer_inactive_count']);
-    // Route::get('/offer.view', [OfferApiController::class, 'offer_view']);
+    Route::post('/api-offer.store', [OfferApiController::class, 'offer_store']);
+    Route::get('/get.offer.all', [OfferApiController::class, 'offer_all']);
+    Route::get('/get.offer.all.count', [OfferApiController::class, 'offer_all_count']);
+    Route::get('/get.offer.active', [OfferApiController::class, 'offer_active']);
+    Route::get('/get.offer.active.count', [OfferApiController::class, 'offer_active_count']);
+    Route::get('/get.offer.pending', [OfferApiController::class, 'offer_pending']);
+    Route::get('/get.offer.pending.count', [OfferApiController::class, 'offer_pending_count']);
+    Route::get('/get.offer.rejected', [OfferApiController::class, 'offer_rejected']);
+    Route::get('/get.offer.rejected.count', [OfferApiController::class, 'offer_rejected_count']);
+    Route::get('/get.offer.inactive', [OfferApiController::class, 'offer_inactive']);
+    Route::get('/get.offer.inactive.count', [OfferApiController::class, 'offer_inactive_count']);
+    Route::get('/offer.view', [OfferApiController::class, 'offer_view']);
 
     // public login
 
-    // Route::get('/offer.list', [OfferAddApiController::class, 'all_list']);
-    // Route::get('/offer.list.by.district', [OfferAddApiController::class, 'district_list']);
-    // Route::get('/offer.list.by.categories', [OfferAddApiController::class, 'categories_list']);
-    // Route::get('/offer.list.by.sub_categories', [OfferAddApiController::class, 'sub_categories_list']);
-    // Route::get('/offer.list.by.offer_categories', [OfferAddApiController::class, 'offer_categories_list']);
-    // Route::get('/offer.list.by.search', [OfferAddApiController::class, 'search_list']);
-    // Route::get('/offer.list.near.you', [OfferAddApiController::class, 'offer_near_you']);
-    // Route::get('/offer.list.trending', [OfferAddApiController::class, 'offer_trending']);
-    // Route::get('/offer.list.expiring.soon', [OfferAddApiController::class, 'offer_expiring_soon']);
-    // Route::get('/offer.single.view', [OfferAddApiController::class, 'offer_single_view']);
-    // Route::post('/offer.single.like', [OfferAddApiController::class, 'offer_like']);
-    // Route::post('/offer.single.deslike', [OfferAddApiController::class, 'offer_deslike']);
+    Route::get('/offer.list', [OfferAddApiController::class, 'all_list']);
+    Route::get('/offer.list.by.district', [OfferAddApiController::class, 'district_list']);
+    Route::get('/offer.list.by.categories', [OfferAddApiController::class, 'categories_list']);
+    Route::get('/offer.list.by.sub_categories', [OfferAddApiController::class, 'sub_categories_list']);
+    Route::get('/offer.list.by.offer_categories', [OfferAddApiController::class, 'offer_categories_list']);
+    Route::get('/offer.list.by.search', [OfferAddApiController::class, 'search_list']);
+    Route::get('/offer.list.near.you', [OfferAddApiController::class, 'offer_near_you']);
+    Route::get('/offer.list.trending', [OfferAddApiController::class, 'offer_trending']);
+    Route::get('/offer.list.expiring.soon', [OfferAddApiController::class, 'offer_expiring_soon']);
+    Route::get('/offer.single.view', [OfferAddApiController::class, 'offer_single_view']);
+    Route::post('/offer.single.like', [OfferAddApiController::class, 'offer_like']);
+    Route::post('/offer.single.deslike', [OfferAddApiController::class, 'offer_deslike']);
    
 });

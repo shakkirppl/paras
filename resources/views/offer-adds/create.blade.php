@@ -102,7 +102,7 @@
                       </div>
                       <div class="col-md-12">
                         <div class="form-group row">
-                          <label class="col-sm-2 col-form-label"> Image</label>
+                          <label class="col-sm-2 col-form-label"> Main Image</label>
                           <div class="col-sm-9">
                             <input type="file" class="form-control" name="image"    />
                             
@@ -110,7 +110,14 @@
                         </div>
                       </div> 
     
-                           
+                      <div class="col-md-12">
+                <div class="form-group row">
+               <label class="col-sm-2 col-form-label">Additional Images</label>
+               <div class="col-sm-9">
+            <input type="file" class="form-control" name="additional_image[]" multiple />
+                </div>
+             </div>
+          </div> 
 
              
           

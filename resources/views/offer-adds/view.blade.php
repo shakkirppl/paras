@@ -24,23 +24,19 @@
                     <input type="hidden" name="master_id" id="master_id" value="{{ $offerAdds->id }}" />
 
                     <!-- Category and Sub-category Dropdowns -->
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                         <div class="col-md-4">
                             <label for="category">Select Category</label>
                             <select id="category" class="form-control">
                                 <option value="">-- Select Category --</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
+                             
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label for="subcategory">Select Sub-Category</label>
-                            <select id="subcategory" class="form-control">
-                                <option value="">-- Select Sub-Category --</option>
-                            </select>
+                          
                         </div>
-                    </div>
+                    </div> -->
 
                     <!-- Products List Table -->
                     <div class="table-responsive">
@@ -48,26 +44,24 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Product</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            @if(count($OfferAddsDetails))
-    @foreach($OfferAddsDetails as $key => $detail)
-        <tr id="{{ $detail->id }}">
-            <td>{{ 1 + $key }}</td>
-            <td class="name">
-                {{ $detail->product->name ?? 'No Product Found' }}
-            </td>
-            <td>
-                <a class="btn btn-warning btn-edit" href="{{ route('offer-adds.remove', $detail->id) }}">Remove</a>
-            </td>
-        </tr>
-    @endforeach
-@else
-    <tr><td colspan="3">Sorry, No Records found!</td></tr>
-@endif
+                            
+                            @if(count($additionalImage))
+                            @foreach($additionalImage as $key=>$additional)
+                           <tr>
+                            <td>{{1+$key}}</td>
+                            <td><img src="{{ url('uploads/offer-adds/' . $additional->image) }}" alt="Image"></td>
+                            <td></td>
+
+                            </tr>
+                            @endforeach
+                        @else
+                        <tr><td colspan="2">Sorry, No Records found!</td></tr>
+                        @endif
                             </tbody>
                         </table>
                     </div>

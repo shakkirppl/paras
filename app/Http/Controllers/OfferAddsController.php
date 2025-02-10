@@ -11,6 +11,7 @@ use App\Models\OfferCategory;
 use App\Models\Categories;
 use App\Models\SubCategories;
 use App\Models\ProductAttribute;
+use App\Models\AdditionalImage;
 use Illuminate\Support\Facades\Validator;
 use App\Helper\File;
 use Intervention\Image\Facades\Image;
@@ -92,6 +93,20 @@ class OfferAddsController extends Controller
                 'offer_adds_type'=>$request->offer_adds_type
             ]);
     
+            if ($request->hasFile('additional_image')) {
+                foreach ($request->file('additional_image') as $image) {
+                    $path = 'uploads/offer-adds';
+                    $imageName = $this->file($image, $path, 150, 150);
+        
+                    // Save to database if needed
+                     $additionalImage=new AdditionalImage;
+                     $additionalImage->offers_id=$offerAdd->id;
+                     $additionalImage->store_id=$request->store_id;
+                     $additionalImage->image=$imageName;
+                     $additionalImage->save();
+                }
+            }
+        
             // Debugging: Check if the record was created
             if (!$offerAdd) {
                 throw new \Exception('Offer creation failed.');
@@ -122,9 +137,8 @@ class OfferAddsController extends Controller
     {
         $offerAdds = OfferAdds::find($id);
         $OfferAddsDetails=OfferAddsDetails::with('product')->where('master_id',$id)->get();
-        $product=Product::where('store_id',$offerAdds->store_id)->get();
-        $categories=Categories::get();
-        return view('offer-adds.view', compact('OfferAddsDetails','product','offerAdds','categories'));
+        $additionalImage=AdditionalImage::where('offers_id',$id)->get();
+        return view('offer-adds.view', compact('OfferAddsDetails','offerAdds','additionalImage'));
     }
 
     /**
