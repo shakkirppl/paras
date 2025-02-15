@@ -244,23 +244,29 @@ class ProductController extends Controller
 
     public function storeSku(Request $request)
     {
-        // return $request->all();
+        //  return $request->all();
         $validator = Validator::make($request->all(), [
-            'sku' => 'required|string|unique:temp_product_skus,sku',
+            // 'sku' => 'required|string|unique:temp_product_skus,sku',
             'product_id' => 'required|exists:temp_products,id',
             'size_attributes_id' => 'required',
             'color_attributes_id' => 'required',
-            'single_image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,jfif,svg|max:2048',
+            // 'single_image' => 'required|image|mimes:jpeg,png,jpg,gif,webp,jfif,svg|max:2048',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
         DB::transaction(function () use ($request) {
+            if($request->if_image){
         if ($request->hasFile('single_image')) {
             $file = $request->file('single_image');
             $path = 'uploads/products';
             $singleImageName = $this->file($file,$path,150,150);
+        }
+        }
+        else{
+            $products=TempProductSku::where('base_unit','Yes')->where('product_id',$request->product_id)->first();
+            $singleImageName = $products->image;
         }
         $productSku = TempProductSku::create([
             'product_id' => $request->product_id,

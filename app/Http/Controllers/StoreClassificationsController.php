@@ -41,10 +41,10 @@ class StoreClassificationsController extends Controller
         $validator = Validator::make($request->all(), [
             'code' => 'nullable|string|max:255|unique:store_classifications,code',
             'name' => 'nullable|string|max:255',
-            'square_feet' => 'nullable|string|max:255',
-            'no_of_staff' => 'nullable|string|max:255',
-            'minimum_sales' => 'required|numeric',
-            'maximum_sales' => 'required|numeric',
+            // 'square_feet' => 'nullable|string|max:255',
+            // 'no_of_staff' => 'nullable|string|max:255',
+            // 'minimum_sales' => 'required|numeric',
+            // 'maximum_sales' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -57,10 +57,12 @@ class StoreClassificationsController extends Controller
                 $storeClassification = new StoreClassifications();
                 $storeClassification->code = $request->code;
                 $storeClassification->name = $request->name;
-                $storeClassification->square_feet = $request->square_feet;
-                $storeClassification->no_of_staff = $request->no_of_staff;
-                $storeClassification->minimum_sales = $request->minimum_sales;
-                $storeClassification->maximum_sales = $request->maximum_sales;
+                $storeClassification->square_feet = 0;
+                $storeClassification->no_of_staff = 0;
+                $storeClassification->minimum_sales = 0;
+                $storeClassification->maximum_sales = 0;
+                $storeClassification->Identity=$request->Identity;
+                $storeClassification->classic_option=$request->classic_option;
                 $storeClassification->save();
             });
 
@@ -95,10 +97,10 @@ class StoreClassificationsController extends Controller
         $validator = Validator::make($request->all(), [
             'code' => 'nullable|string|max:255|unique:store_classifications,code,' . $id,
             'name' => 'nullable|string|max:255',
-            'square_feet' => 'nullable|string|max:255',
-            'no_of_staff' => 'nullable|string|max:255',
-            'minimum_sales' => 'required|numeric',
-            'maximum_sales' => 'required|numeric',
+            // 'square_feet' => 'nullable|string|max:255',
+            // 'no_of_staff' => 'nullable|string|max:255',
+            // 'minimum_sales' => 'required|numeric',
+            // 'maximum_sales' => 'required|numeric',
         ]);
 
         if ($validator->fails()) {
@@ -111,10 +113,8 @@ class StoreClassificationsController extends Controller
                 $storeClassification = StoreClassifications::findOrFail($id);
                 $storeClassification->code = $request->code;
                 $storeClassification->name = $request->name;
-                $storeClassification->square_feet = $request->square_feet;
-                $storeClassification->no_of_staff = $request->no_of_staff;
-                $storeClassification->minimum_sales = $request->minimum_sales;
-                $storeClassification->maximum_sales = $request->maximum_sales;
+                $storeClassification->Identity=$request->Identity;
+                $storeClassification->classic_option=$request->classic_option;
                 $storeClassification->save();
             });
 

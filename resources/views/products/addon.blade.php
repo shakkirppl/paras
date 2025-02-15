@@ -98,19 +98,27 @@
 
               <div class="col-md-12">
                         <div class="form-group row">
-                          <label class="col-sm-2 col-form-label required"> SKU</label>
+                          <label class="col-sm-2 col-form-label"> SKU</label>
                           <div class="col-sm-9">
                             <input type="text" class="form-control" placeholder="SKU" name="sku"    value="{{old('sku')}}" />
                           </div>
                         </div>
                       </div>
 
+                      <div class="col-md-12">
+                        <div class="form-group row">
+                          <label class="col-sm-2 col-form-label"> If Image</label>
+                          <div class="col-sm-9">
+                            <input type="checkbox" class="form-control" name="if_image" />
+                          </div>
+                        </div>
+                      </div>
 
                       <div class="col-md-12">
                         <div class="form-group row">
                           <label class="col-sm-2 col-form-label required"> Main Image</label>
                           <div class="col-sm-9">
-                          <input type="file" name="single_image" class="form-control-file" required>
+                          <input type="file" name="single_image" class="form-control-file" >
                           </div>
                         </div>
                       </div>

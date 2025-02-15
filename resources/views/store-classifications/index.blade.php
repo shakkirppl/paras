@@ -24,10 +24,12 @@
                       <th>#</th>
                       <th>Code</th>
                       <th>Name</th>
-                      <th>Square Feet</th>
+                      <th>Identity</th>
+                      <th>Classic Option</th>
+                      <!-- <th>Square Feet</th>
                       <th>No. of Staff</th>
                       <th>Min Sales</th>
-                      <th>Max Sales</th>
+                      <th>Max Sales</th> -->
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -37,10 +39,9 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $classification->code }}</td>
                         <td>{{ $classification->name }}</td>
-                        <td>{{ $classification->square_feet }}</td>
-                        <td>{{ $classification->no_of_staff }}</td>
-                        <td>{{ $classification->minimum_sales }}</td>
-                        <td>{{ $classification->maximum_sales }}</td>
+                        <td>{{ $classification->Identity }}</td>
+                        <td>{{ $classification->classic_option }}</td>
+         
                         <td>
                           <a href="{{ route('store-classifications.edit', $classification->id) }}" class="btn btn-sm btn-primary">Edit</a>
 
