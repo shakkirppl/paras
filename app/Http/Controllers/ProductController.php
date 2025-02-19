@@ -263,6 +263,10 @@ class ProductController extends Controller
             $path = 'uploads/products';
             $singleImageName = $this->file($file,$path,150,150);
         }
+        else{
+            $products=TempProductSku::where('base_unit','Yes')->where('product_id',$request->product_id)->first();
+            $singleImageName = $products->image;
+        }
         }
         else{
             $products=TempProductSku::where('base_unit','Yes')->where('product_id',$request->product_id)->first();
