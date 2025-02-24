@@ -7,18 +7,127 @@ use App\Models\OfferCategory;
 use App\Models\OfferDetails;
 use App\Models\OfferAdds;
 use App\Models\AddTags;
+use App\Models\Store;
 use App\Models\Coupens;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use App\Models\OfferAdditionalImage;
 use Illuminate\Support\Str;
 use App\Helper\File;
 class OfferApiController extends Controller
 {
     //
     use File;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Validator;
+    use App\Models\Offer;
+    use App\Models\OfferAdditionalImage;
+    use App\Models\Store;
+    
+    public function offer_store(Request $request)
+    {
+        // Validate Request
+        $validator = Validator::make($request->all(), [
+            'offer_categories_id' => 'required|exists:offer_categories,id',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after:start_date',
+            'user_id' => 'required|exists:users,id',
+            'store_id' => 'required|exists:stores,id',
+            'image' => 'required|array', // Ensure 'image' is an array
+            'image.*' => 'file|mimes:jpeg,png,jpg,gif,webp|max:2048', // Validate each image
+        ]);
+    
+        // Check Validation Failure
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation Failed',
+                'errors' => $validator->errors()
+            ], 422);
+        }
+    
+        // Wrap in a Transaction
+        DB::beginTransaction();
+        try {
+            $store = Store::findOrFail($request->store_id);
+            
+             // Auto Generate Offer Code (AD001, AD002, ...)
+        $lastOffer = Offer::latest('id')->first();
+        $lastNumber = $lastOffer ? intval(substr($lastOffer->code, 2)) : 0;
+        $newCode = 'AD' . str_pad($lastNumber + 1, 3, '0', STR_PAD_LEFT);
+
+            // Upload First Image
+            $path = 'uploads/offer/';
+            $image = 'default.jpg';
+            if ($request->hasFile('image')) {
+                $photo = $request->file('image');
+                $image = $this->file($photo[0], $path, 300, 300);
+            }
+    
+            // Create Offer
+            $newOffer = Offer::create([
+                'code' => $newCode,
+                'title' => $request->title,
+                'offer_categories_id' => $request->offer_categories_id,
+                'start_date' => $request->start_date,
+                'end_date' => $request->end_date,
+                'district_id' => $store->district_id,
+                'store_subscription_end_date' => $store->subscription_end_date,
+                'user_id' => $request->user_id,
+                'store_id' => $request->store_id,
+                'image' => $image,
+                'short_description' => null,
+                'highlight_title' => null,
+                'categories_id' => 0,
+                'sub_categories_id' => 0,
+                'descount_percentage' => 0,
+                'in_date' => 0,
+                'description' => null,
+                'tags' => null,
+                'latitude' => null,
+                'longitude' => null,
+                'offer_like' => 0,
+                'offer_deslike' => 0,
+                'no_of_use' => 0,
+                'views' => 0,
+                'hot_deal' => 0,
+                'trending' => 0,
+                'promote' => 0,
+                'applicable_on' => null,
+            ]);
+    
+            // Save Additional Images
+            foreach ($photo as $photos) {
+                $mimage = $this->file($photos, $path, 300, 300);
+                OfferAdditionalImage::create([
+                    'offers_id' => $newOffer->id,
+                    'store_id' => $request->store_id,
+                    'image' => $mimage
+                ]);
+            }
+    
+            DB::commit(); // Commit Transaction
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Offer created successfully',
+                'data' => $newOffer
+            ], 201);
+    
+        } catch (\Exception $e) {
+            DB::rollBack(); // Rollback on Error
+    
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while saving the offer',
+            ], 500);
+        }
+    }
+    
 
     public function offer_adds_section1(Request $request)
     {

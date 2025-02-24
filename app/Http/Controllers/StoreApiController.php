@@ -45,7 +45,7 @@ class StoreApiController extends Controller
         }
         if( $file = $request->file('logo') ) {
             $path = 'uploads/store';
-            $image = $this->file($file,$path,150,150);
+            $image = $this->file($file,$path,300,300);
         }else{$image='defalut.jpg';}
         try {
             DB::transaction(function () use ($request,$image,&$store) {

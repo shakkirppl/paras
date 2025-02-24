@@ -40,7 +40,7 @@ class BrandController extends Controller
      
             if( $file = $request->file('image') ) {
                 $path = 'uploads/brand';
-                $image = $this->file($file,$path,150,150);
+                $image = $this->file($file,$path,300,300);
             }else{$image='defalut.jpg';}
         DB::transaction(function () use ($request,$image) {
             Brand::create([
@@ -75,7 +75,7 @@ class BrandController extends Controller
         try {
             if( $file = $request->file('image') ) {
                 $path = 'uploads/brand';
-                $image = $this->file($file,$path,150,150);
+                $image = $this->file($file,$path,300,300);
             }else{$image=$brand->image;}
             DB::transaction(function () use ($request,$brand,$image) {
                 $brand->update([

@@ -47,7 +47,7 @@ class OfferApiControllerbackup extends Controller
         }
         if( $file = $request->file('image') ) {
             $path = 'uploads/offer';
-            $image = $this->file($file,$path,150,150);
+            $image = $this->file($file,$path,300,300);
         }else{$image='defalut.jpg';}
         try {
             DB::transaction(function () use ($request,$image,&$offer) {

@@ -200,7 +200,7 @@ class ProductController extends Controller
         if ($request->hasFile('single_image')) {
             $file = $request->file('single_image');
             $path = 'uploads/products';
-            $singleImageName = $this->file($file,$path,150,150);
+            $singleImageName = $this->file($file,$path,300,300);
         }
         $productSku = TempProductSku::create([
             'product_id' => $product->id,
@@ -221,7 +221,7 @@ class ProductController extends Controller
         foreach ($request->file('multiple_images') as $image) {
             $file =  $image;
             $path = 'uploads/products';
-            $imageName = $this->file($file,$path,150,150);
+            $imageName = $this->file($file,$path,300,300);
             $multipleImages[] = $imageName;
         }
     }
@@ -261,7 +261,7 @@ class ProductController extends Controller
         if ($request->hasFile('single_image')) {
             $file = $request->file('single_image');
             $path = 'uploads/products';
-            $singleImageName = $this->file($file,$path,150,150);
+            $singleImageName = $this->file($file,$path,300,300);
         }
         else{
             $products=TempProductSku::where('base_unit','Yes')->where('product_id',$request->product_id)->first();
@@ -291,7 +291,7 @@ class ProductController extends Controller
         foreach ($request->file('multiple_images') as $image) {
             $file =  $image;
             $path = 'uploads/products';
-            $imageName = $this->file($file,$path,150,150);
+            $imageName = $this->file($file,$path,300,300);
             $multipleImages[] = $imageName;
         }
     }
@@ -326,7 +326,7 @@ class ProductController extends Controller
         if ($request->hasFile('single_image')) {
             $file = $request->file('single_image');
             $path = 'uploads/products';
-            $singleImageName = $this->file($file,$path,150,150);
+            $singleImageName = $this->file($file,$path,300,300);
             $productSku->image=$singleImageName;
             $productSku->save();
             TempProductImages::create([
@@ -343,7 +343,7 @@ class ProductController extends Controller
         foreach ($request->file('multiple_images') as $image) {
             $file =  $image;
             $path = 'uploads/products';
-            $imageName = $this->file($file,$path,150,150);
+            $imageName = $this->file($file,$path,300,300);
             $multipleImages[] = $imageName;
         }
     }

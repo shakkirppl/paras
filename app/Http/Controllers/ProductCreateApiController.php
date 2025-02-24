@@ -209,7 +209,7 @@ class ProductCreateApiController extends Controller
         }
         if( $file = $request->file('image') ) {
             $path = 'uploads/products';
-            $image = $this->file($file,$path,150,150);
+            $image = $this->file($file,$path,300,300);
         }else{$image='defalut.jpg';}
         try {
             DB::transaction(function () use ($request,$image,&$product) {

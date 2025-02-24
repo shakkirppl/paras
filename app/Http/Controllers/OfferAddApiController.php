@@ -12,7 +12,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')->Running()->paginate(50);
+            $results = Offer::select('id','code','title','image')->with('offercategories')->Running()->paginate(50);
     
             // Check if data exists
             if ($results->isEmpty()) {
@@ -44,7 +44,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')
+            $results = Offer::select('id','code','title','image')->with('offercategories')
             ->Running()->District($request->district)->paginate(50);
     
             // Check if data exists
@@ -143,7 +143,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')
+            $results = Offer::select('id','code','title','image')->with('offercategories')
             ->Running()->District($request->district)->OfferCategory($request->offercategory)->paginate(50);
     
             // Check if data exists
@@ -176,7 +176,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id', 'code', 'title', 'short_description', 'highlight_title', 'image')
+            $results = Offer::select('id', 'code', 'title', 'image')
             ->with('offercategories')
             ->Running()
             ->District($request->district)
@@ -213,7 +213,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')->Running()->paginate(50);
+            $results = Offer::select('id','code','title','image')->with('offercategories')->Running()->paginate(50);
     
             // Check if data exists
             if ($results->isEmpty()) {
@@ -245,7 +245,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')->Running()->paginate(50);
+            $results = Offer::select('id','code','title','image')->with('offercategories')->Running()->paginate(50);
     
             // Check if data exists
             if ($results->isEmpty()) {
@@ -277,7 +277,7 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')->Running()->paginate(50);
+            $results = Offer::select('id','code','title','image')->with('offercategories')->Running()->paginate(50);
     
             // Check if data exists
             if ($results->isEmpty()) {

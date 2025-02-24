@@ -40,7 +40,7 @@ class CategoryController extends Controller
         try {
             if( $file = $request->file('image') ) {
                 $path = 'uploads/category';
-                $image = $this->file($file,$path,150,150);
+                $image = $this->file($file,$path,300,300);
             }else{$image='defalut.jpg';}
           
         DB::transaction(function () use ($request,$image) {
@@ -78,7 +78,7 @@ class CategoryController extends Controller
            
             if( $file = $request->file('image') ) {
                 $path = 'uploads/category';
-                $image = $this->file($file,$path,150,150);
+                $image = $this->file($file,$path,300,300);
             }else{$image=$category->image;}
             DB::transaction(function () use ($request,$category,$image) {
                 $category->name=$request->name;
