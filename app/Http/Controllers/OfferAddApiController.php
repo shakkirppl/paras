@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Offer;
+use App\Models\OfferAdditionalImage;
 use DB;
 class OfferAddApiController extends Controller
 {
@@ -310,7 +311,7 @@ class OfferAddApiController extends Controller
         try {
             // Fetch stores that are complete and active
             $results = Offer::with('offercategories')->find($request->id);
-    
+            $offerAdditionalImage=OfferAdditionalImage::where('offers_id',$request->id)->get();
             // Check if data exists
             if (!$results) {
                 // Return 'no data found' response if the collection is empty
@@ -325,7 +326,8 @@ class OfferAddApiController extends Controller
             return response()->json([
                 'status' => 'success',
                 'message' => 'Data retrieved successfully',
-                'data' => $results
+                'data' => $results,
+                'offerAdditionalImage'=>$offerAdditionalImage
             ], 200);
     
         } catch (\Exception $e) {
