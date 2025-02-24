@@ -21,12 +21,7 @@ class OfferApiController extends Controller
 {
     //
     use File;
-    use Illuminate\Http\Request;
-    use Illuminate\Support\Facades\DB;
-    use Illuminate\Support\Facades\Validator;
-    use App\Models\Offer;
-    use App\Models\OfferAdditionalImage;
-    use App\Models\Store;
+
     
     public function offer_store(Request $request)
     {
