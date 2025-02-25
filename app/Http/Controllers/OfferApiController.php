@@ -118,7 +118,7 @@ class OfferApiController extends Controller
     
             return response()->json([
                 'status' => 'error',
-                'message' => 'An error occurred while saving the offer',
+                'message' => [$e->getMessage()],
             ], 500);
         }
     }
