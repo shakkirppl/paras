@@ -30,6 +30,8 @@ class OfferApiController extends Controller
             'offer_categories_id' => 'required|exists:offer_categories,id',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
+            'start_date' => 'required|date_format:d-m-Y',
+            'end_date' => 'required|date_format:d-m-Y',
             'user_id' => 'required|exists:users,id',
             'store_id' => 'required|exists:stores,id',
             'image' => 'required|array', // Ensure 'image' is an array
@@ -68,8 +70,9 @@ class OfferApiController extends Controller
                 'code' => $newCode ?? null,
                 'title' => $request->title,
                 'offer_categories_id' => $request->offer_categories_id,
-                'start_date' => $request->start_date,
-                'end_date' => $request->end_date,
+                'start_date' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date)->format('Y-m-d'),
+                'end_date' => \Carbon\Carbon::createFromFormat('d-m-Y', $request->end_date)->format('Y-m-d'),
+
                 'district_id' => $store->district_id,
                 'store_subscription_end_date' => $store->subscription_end_date,
                 'user_id' => $request->user_id,
