@@ -70,9 +70,9 @@ class OfferApiController extends Controller
                 'code' => $newCode ?? null,
                 'title' => $request->title,
                 'offer_categories_id' => $request->offer_categories_id,
-                'start_date' => Carbon\Carbon::createFromFormat('d-m-Y', $request->start_date)->format('Y-m-d'),
-                'end_date' => Carbon\Carbon::createFromFormat('d-m-Y', $request->end_date)->format('Y-m-d'),
-                'in_date' => $request->in_date ? Carbon\Carbon::createFromFormat('d-m-Y', $request->in_date)->format('Y-m-d H:i:s') : now(),
+                'start_date' => Carbon::createFromFormat('d-m-Y', $request->start_date)->format('Y-m-d'),
+                'end_date' => Carbon::createFromFormat('d-m-Y', $request->end_date)->format('Y-m-d'),
+                'in_date' => $request->in_date ? Carbon::parse($request->in_date) : now(), // Ensure a valid date
                 'district_id' => $store->district_id,
                 'store_subscription_end_date' => $store->subscription_end_date,
                 'user_id' => $request->user_id,
