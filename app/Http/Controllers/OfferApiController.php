@@ -100,11 +100,12 @@ class OfferApiController extends Controller
             // Save Additional Images
             foreach ($photo as $photos) {
                 $mimage = $this->file($photos, $path, 300, 300);
-                OfferAdditionalImage::create([
-                    'offers_id' => $newOffer->id,
-                    'store_id' => $request->store_id,
-                    'image' => $mimage
-                ]);
+                $offerAd=new OfferAdditionalImage;
+                $offerAd->offers_id=$newOffer->id;
+                $offerAd->store_id=$request->store_id;
+                $offerAd->image=$mimage;
+                $offerAd->save();
+               
             }
     
             DB::commit(); // Commit Transaction
