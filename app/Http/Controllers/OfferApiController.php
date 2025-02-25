@@ -65,7 +65,7 @@ class OfferApiController extends Controller
     
             // Create Offer
             $newOffer = Offer::create([
-                'code' => $newCode,
+                'code' => $newCode ?? null,
                 'title' => $request->title,
                 'offer_categories_id' => $request->offer_categories_id,
                 'start_date' => $request->start_date,

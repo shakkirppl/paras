@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 class Offer extends Model
 {
+     protected $fillable = ['code', 'title', 'offer_categories_id','start_date','end_date','district_id','store_subscription_end_date','user_id','store_id','image','short_description','highlight_title','categories_id','sub_categories_id','descount_percentage','in_date','description','tags','latitude','longitude','offer_like','offer_deslike','no_of_use','views','hot_deal','trending','promote','applicable_on'];  // Add 'code' here
     use HasFactory;
     public function scopeRunning($query)
     {
