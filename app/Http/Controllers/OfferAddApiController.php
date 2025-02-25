@@ -13,8 +13,8 @@ class OfferAddApiController extends Controller
     {
         try {
             // Fetch stores that are complete and active
-            $results = Offer::select('id','code','title','image')->with('offercategories')->Running()->paginate(50);
-    
+            $results = Offer::select('id','code','title','image')->with('offercategories')->paginate(50);
+            // ->Running()
             // Check if data exists
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -46,8 +46,8 @@ class OfferAddApiController extends Controller
         try {
             // Fetch stores that are complete and active
             $results = Offer::select('id','code','title','image')->with('offercategories')
-            ->Running()->District($request->district)->paginate(50);
-    
+            ->District($request->district)->paginate(50);
+            // ->Running()
             // Check if data exists
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -79,8 +79,8 @@ class OfferAddApiController extends Controller
         try {
             // Fetch stores that are complete and active
             $results = Offer::select('id','code','title','short_description','highlight_title','image')->with('offercategories')
-            ->Running()->District($request->district)->Category($request->category)->paginate(50);
-    
+            ->District($request->district)->Category($request->category)->paginate(50);
+            // ->Running()
             // Check if data exists
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -145,8 +145,8 @@ class OfferAddApiController extends Controller
         try {
             // Fetch stores that are complete and active
             $results = Offer::select('id','code','title','image')->with('offercategories')
-            ->Running()->District($request->district)->OfferCategory($request->offercategory)->paginate(50);
-    
+            ->District($request->district)->OfferCategory($request->offercategory)->paginate(50);
+            // ->Running()
             // Check if data exists
             if ($results->isEmpty()) {
                 // Return 'no data found' response if the collection is empty
@@ -179,7 +179,7 @@ class OfferAddApiController extends Controller
             // Fetch stores that are complete and active
             $results = Offer::select('id', 'code', 'title', 'image')
             ->with('offercategories')
-            ->Running()
+            // ->Running()
             ->District($request->district)
             ->where('tags', 'like', '%' . $request->value . '%')
             ->paginate(50);
