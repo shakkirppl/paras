@@ -32,6 +32,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', [ApiAuthController::class, 'user']);
     // common
     Route::get('/get.districts', [StoreApiController::class, 'districts']);
+    Route::get('/get.city.districts', [StoreApiController::class, 'cityByDistricts']);
     Route::get('/store.get.classification', [StoreApiController::class, 'store_classification']);
     Route::get('/store.get.type', [StoreApiController::class, 'store_type']);
     Route::get('/get.offer.categories', [OfferApiController::class, 'offer_categories']);

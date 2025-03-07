@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductAttributeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OfferAddsController;
 use App\Http\Controllers\OtherTransactionController;
+use App\Http\Controllers\CityController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -72,6 +73,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('coupons', CouponController::class);
     Route::resource('category', CategoryController::class);
     Route::resource('sub-category', SubCategoryController::class);
+    Route::resource('city', CityController::class);
+    
     Route::resource('brand', BrandController::class);
     Route::resource('product-attributes', ProductAttributeController::class);
     Route::resource('products', ProductController::class);

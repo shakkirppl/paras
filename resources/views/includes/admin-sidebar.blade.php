@@ -24,6 +24,7 @@
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('sub-category')}}">Sub Category</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('brand')}}">Brand</a></li>
               <li class="nav-item"> <a class="nav-link" href="{{URL::to('product-attributes')}}">Product Attributes</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('city')}}">City</a></li>
               </ul>
             </div>
             

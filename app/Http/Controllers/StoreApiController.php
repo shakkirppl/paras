@@ -6,6 +6,7 @@ use App\Models\Store;
 use App\Models\StoreTypes;
 use App\Models\StoreClassifications;
 use App\Models\Districts;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -697,6 +698,38 @@ class StoreApiController extends Controller
         try {
             // Fetch stores that are complete and active
             $results = Districts::get();
+    
+            // Check if data exists
+            if ($results->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $results
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    public function cityByDistricts(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $results = City::where('distrct_id',$request->district_id)->get();
     
             // Check if data exists
             if ($results->isEmpty()) {
