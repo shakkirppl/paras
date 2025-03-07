@@ -28,6 +28,8 @@ class OfferApiController extends Controller
         // Validate Request
         $validator = Validator::make($request->all(), [
             'offer_categories_id' => 'required|exists:offer_categories,id',
+            'district_id'=> 'required|exists:districts,id',
+            'city_id'=> 'required|exists:cities,id',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
             'start_date' => 'required|date_format:d-m-Y',
@@ -74,6 +76,7 @@ class OfferApiController extends Controller
                 'end_date' => Carbon::createFromFormat('d-m-Y', $request->end_date)->format('Y-m-d'),
                 'in_date' => $request->in_date ? Carbon::parse($request->in_date) : now(), // Ensure a valid date
                 'district_id' => $store->district_id,
+                'city_id' => $store->city_id,
                 'store_subscription_end_date' => $store->subscription_end_date,
                 'user_id' => $request->user_id,
                 'store_id' => $request->store_id,
