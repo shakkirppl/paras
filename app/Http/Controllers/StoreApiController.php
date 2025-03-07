@@ -30,6 +30,7 @@ class StoreApiController extends Controller
             'store_classifications_id' => 'required|exists:store_classifications,id',
             'user_id' => 'required|exists:users,id',
             'district_id' => 'required|exists:districts,id',
+            'city_id'=> 'required|exists:cities,id',
             'address' => 'nullable|string',
             'latitude' => 'nullable|string',
             'admin_user_name' => 'nullable|string|max:255',
@@ -59,6 +60,7 @@ class StoreApiController extends Controller
                 $store->store_types_id = $request->store_types_id;
                 $store->store_classifications_id = $request->store_classifications_id;
                 $store->district_id = $request->district_id;
+                $store->city_id = $request->city_id;
                 $store->logo = $image; // Handle file uploads if necessary
                 $store->email = $request->email;
                 $store->contact_no = $request->contact_no;

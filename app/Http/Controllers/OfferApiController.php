@@ -28,8 +28,6 @@ class OfferApiController extends Controller
         // Validate Request
         $validator = Validator::make($request->all(), [
             'offer_categories_id' => 'required|exists:offer_categories,id',
-            'district_id'=> 'required|exists:districts,id',
-            'city_id'=> 'required|exists:cities,id',
             'start_date' => 'required|date|after_or_equal:today',
             'end_date' => 'required|date|after:start_date',
             'start_date' => 'required|date_format:d-m-Y',
