@@ -95,4 +95,8 @@ class Offer extends Model
         
         return $this->hasMany(OfferCategory::class,'id','offer_categories_id')->select('id','code','name');
      }
+     public function store(){
+        
+          return $this->hasMany(Store::class,'id','store_id')->select('id','code','name','logo');
+       }
 }

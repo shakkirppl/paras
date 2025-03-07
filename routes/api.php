@@ -135,6 +135,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/offer.list', [OfferAddApiController::class, 'all_list']);
     Route::get('/offer.list.by.district', [OfferAddApiController::class, 'district_list']);
+    Route::get('/offer.list.by.district.city', [OfferAddApiController::class, 'city_district_list']);
+    Route::get('/offer.list.by.store', [OfferAddApiController::class, 'store_list']);
     Route::get('/offer.list.by.categories', [OfferAddApiController::class, 'categories_list']);
     Route::get('/offer.list.by.sub_categories', [OfferAddApiController::class, 'sub_categories_list']);
     Route::get('/offer.list.by.offer_categories', [OfferAddApiController::class, 'offer_categories_list']);
