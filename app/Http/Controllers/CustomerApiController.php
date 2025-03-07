@@ -34,7 +34,7 @@ class CustomerApiController extends Controller
             ], 422);
         }
         try {
-            DB::transaction(function () use ($request,&$customers) {
+            DB::transaction(function () use ($request,&$customers, &$token) {
                 $customers = new Customers();
                 $customers->name = $request->name;
                 $customers->email = $request->email;
@@ -48,7 +48,9 @@ class CustomerApiController extends Controller
                     'password' => Hash::make($request->password),
                     'user_rol_id' => 5,
                     'store_id' => -1,
-                ]);        
+                ]);    
+                  // Generate authentication token
+            $token = $user->createToken('api_token')->plainTextToken;    
             });
 
             if (!$customers) {
@@ -57,9 +59,11 @@ class CustomerApiController extends Controller
                     'message' => 'Data not found',
                 ], 404);
             }
+
             return response()->json([
                 'status' => 'success',
                 'data' => $customers,
+                'token' => $token, // Return the generated token
             ], 200);
         } catch (\Exception $e) {
             return response()->json([
