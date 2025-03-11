@@ -23,6 +23,7 @@ class CustomerApiController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'mobile' => ['required', 'string',  'max:255', 'unique:'.Customers::class,'regex:/^[6-9]\d{9}$/'],
             'password' => 'required|string|min:4',
+            'gender'=> 'required|string'
         ]);
 
         if ($validator->fails()) {
@@ -40,6 +41,7 @@ class CustomerApiController extends Controller
                 $customers->email = $request->email;
                 $customers->mobile = $request->mobile;
                 $customers->password = $request->password;
+                $customers->gender=$request->gender;
                 $customers->save();
 
                 $user = User::create([
