@@ -7,6 +7,7 @@ use App\Models\Offer;
 use App\Models\OfferAdditionalImage;
 use App\Models\Favorite;
 use App\Models\OfferView;
+use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
 use DB;
 class OfferAddApiController extends Controller
