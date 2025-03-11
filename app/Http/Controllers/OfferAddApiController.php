@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Offer;
 use App\Models\OfferAdditionalImage;
+use App\Models\Favorite;
 use DB;
 class OfferAddApiController extends Controller
 {
@@ -463,4 +464,79 @@ class OfferAddApiController extends Controller
             ], 500); // 500 is the HTTP status code for Internal Server Error
         }
     }
+    public function offer_add_favorite(Request $request)
+    {
+        // return $request->all();
+        // Validation
+        $validator = Validator::make($request->all(), [
+            'offer_id' => 'required|exists:offers,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        if ($validator->fails()) {
+            // Return a JSON response with detailed validation errors
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors() // This will include the details of which fields failed
+            ], 422);
+        }
+        try {
+            DB::transaction(function () use ($request,&$favorite) {
+                $favorite = new Favorite;
+                $favorite->offer_id=$request->offer_id;
+                $favorite->user_id=$request->user_id;
+                $favorite->save();  
+            });
+
+            if (!$favorite) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Data not found',
+                ], 404);
+            }
+            return response()->json([
+                'status' => 'success',
+                'data' => $favorite,
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to create store: ' . $e->getMessage(),
+            ], 500); // 500 is the HTTP status code for Internal Server Error
+        }
+    }
+    public function offer_get_favorite(Request $request)
+    {
+        try {
+            // Fetch stores that are complete and active
+            $results = Favorite::with('offer','user')->where('user_id',$request->user_id)->paginate(50);
+    
+            // Check if data exists
+            if ($results->isEmpty()) {
+                // Return 'no data found' response if the collection is empty
+                return response()->json([
+                    'status' => 'success',
+                    'message' => 'No data found',
+                    'data' => []
+                ], 200);
+            }
+    
+            // Return data if it exists
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Data retrieved successfully',
+                'data' => $results
+            ], 200);
+    
+        } catch (\Exception $e) {
+            // Handle exceptions and return error response
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while fetching data',
+                'error' => $e->getMessage()
+            ], 500);
+        }
+    }
+    
 }
