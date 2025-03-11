@@ -28,6 +28,15 @@ class Offer extends Model
          });
 
     }
+    public function scopeCity($query,$value)
+    {
+      return $query->where(function($query)use ($value) {
+        if ($value) {
+            $query->where('city_id', $value);
+        }
+         });
+
+    }
     public function scopeCategory($query,$value)
     {
       return $query->where(function($query)use ($value) {

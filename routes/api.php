@@ -148,6 +148,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/offer.single.like', [OfferAddApiController::class, 'offer_like']);
     Route::post('/offer.single.deslike', [OfferAddApiController::class, 'offer_deslike']);
     Route::post('offer.add.favorite', [OfferAddApiController::class, 'offer_add_favorite']);
-    Route::post('offer.get.favorite', [OfferAddApiController::class, 'offer_get_favorite']);
+    Route::get('offer.get.favorite', [OfferAddApiController::class, 'offer_get_favorite']);
+    Route::get('offer.list.latest', [OfferAddApiController::class, 'all_list_latest']);
+    Route::post('offer.add.view', [OfferAddApiController::class, 'offer_add_view']);
     
 });
