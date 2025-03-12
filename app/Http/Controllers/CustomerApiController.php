@@ -48,6 +48,7 @@ class CustomerApiController extends Controller
                     'name' => $request->name,
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
+                    'gender'=>$request->gender,
                     'user_rol_id' => 5,
                     'store_id' => -1,
                 ]);    
