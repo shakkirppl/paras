@@ -36,13 +36,7 @@ class CustomerApiController extends Controller
         }
         try {
             DB::transaction(function () use ($request,&$customers, &$token) {
-                $customers = new Customers();
-                $customers->name = $request->name;
-                $customers->email = $request->email;
-                $customers->mobile = $request->mobile;
-                $customers->password = $request->password;
-                $customers->gender=$request->gender;
-                $customers->save();
+               
 
                 $user = User::create([
                     'name' => $request->name,
@@ -52,6 +46,14 @@ class CustomerApiController extends Controller
                     'user_rol_id' => 5,
                     'store_id' => -1,
                 ]);    
+                $customers = new Customers();
+                $customers->name = $request->name;
+                $customers->email = $request->email;
+                $customers->mobile = $request->mobile;
+                $customers->password = $request->password;
+                $customers->gender=$request->gender;
+                $customers->user_id=$user->id;
+                $customers->save();
                   // Generate authentication token
             $token = $user->createToken('api_token')->plainTextToken;    
             });
@@ -81,13 +83,7 @@ class CustomerApiController extends Controller
         $validator = Validator::make($request->all(), [
             'user_id' => 'required|integer|exists:users,id',
             'name' => 'required|string|max:255',
-            'mobile' => [
-                'required', 
-                'string',  
-                'max:255', 
-                'regex:/^[6-9]\d{9}$/',
-                Rule::unique('customers', 'mobile')->ignore($request->user_id, 'user_id'),
-            ],
+            'mobile' => ['required', 'string',  'max:255', 'unique:'.Customers::class,'regex:/^[6-9]\d{9}$/'],
             'gender' => 'required|string'
         ]);
     
