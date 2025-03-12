@@ -587,6 +587,53 @@ class OfferAddApiController extends Controller
             ], 500); // 500 is the HTTP status code for Internal Server Error
         }
     }
+    public function offer_remove_favorite(Request $request)
+    {
+        // Validation
+        $validator = Validator::make($request->all(), [
+            'offer_id' => 'required|exists:offers,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+    
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors(),
+            ], 422);
+        }
+    
+        try {
+            $favorite = Favorite::where('offer_id', $request->offer_id)
+                                ->where('user_id', $request->user_id)
+                                ->first();
+    
+            if (!$favorite) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Data not found',
+                ], 404);
+            }
+    
+            // Use DB transaction to ensure safe delete
+            DB::transaction(function () use ($favorite) {
+                $favorite->delete();
+            });
+    
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Offer removed from favorites successfully',
+            ], 200);
+            
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to remove favorite: ' . $e->getMessage(),
+            ], 500);
+        }
+    }
+    
+    
     public function offer_get_favorite(Request $request)
     {
         try {
