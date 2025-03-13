@@ -285,7 +285,7 @@ class OfferAddApiController extends Controller
             ->with('offercategories','store')
             // ->Running()
             ->District($request->district)
-            ->where('tags', 'like', '%' . $request->value . '%')
+            ->where('title', 'like', '%' . $request->value . '%')
             ->paginate(50);
     
             // Check if data exists
