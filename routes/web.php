@@ -57,6 +57,16 @@ Route::middleware('auth')->group(function () {
     Route::resource('store-type', StoreTypeController::class);
     Route::resource('store-classifications', StoreClassificationsController::class);
     Route::resource('stores', StoreController::class);
+    
+    Route::get('pending-store', [StoreController::class, 'pendingStore']);
+    Route::get('rejected-store', [StoreController::class, 'rejectedStore']);
+    Route::get('completed-store', [StoreController::class, 'completedStore']);
+    Route::get('in-progress-store', [StoreController::class, 'inProgressStore']);
+    Route::get('store.view/{id}', [StoreController::class, 'view'])->name('stores.view');
+    Route::post('/store/update-register-status', [StoreController::class, 'updateRegisterStatus'])->name('store.updateRegisterStatus');
+    Route::post('/store/update-status', [StoreController::class, 'updateStatus'])->name('store.updateStatus');
+    
+    Route::get('products.image/{id}', [ProductController::class, 'image']);
     Route::resource('lucky-draws', LuckyDrawController::class);
     Route::resource('employees', EmployeesController::class);
     

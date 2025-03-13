@@ -84,7 +84,22 @@
 
 
 
-
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#collection_report" aria-expanded="false" aria-controls="charts">
+              <i class="icon-bar-graph menu-icon"></i>
+              <span class="menu-title">Store</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="collection_report">
+              <ul class="nav flex-column sub-menu">
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('pending-store')}}"> Pending Store</a></li>  
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('rejected-store')}}"> Rejected Store</a></li>  
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('completed-store')}}"> Completed Store</a></li>  
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('in-progress-store')}}"> In Process Store</a></li>    
+              </ul>
+            </div>
+     
+          </li>
     
 
                  
@@ -96,7 +111,7 @@
             </a>
             <div class="collapse" id="collection_report">
               <ul class="nav flex-column sub-menu">
-               
+
               </ul>
             </div>
      

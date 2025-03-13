@@ -24,7 +24,52 @@ class StoreController extends Controller
         $stores = Store::all(); // You may want to add pagination or filters here
         return view('stores.index', compact('stores'));
     }
+    public function pendingStore()
+    {
+        try {
+        $stores = Store::where('status','inactive')->where('register_status','pending')->get(); // You may want to add pagination or filters here
+        return view('stores.report', compact('stores'));
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to create store: ' . $e->getMessage());
+    }
+    }
+    public function rejectedStore()
+    {
+        try {
+        $stores = Store::where('register_status','rejected')->get(); // You may want to add pagination or filters here
+        return view('stores.report', compact('stores'));
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to create store: ' . $e->getMessage());
+    }
+    }
+    public function completedStore()
+    {
+        try {
+        $stores = Store::where('register_status','complete')->get(); // You may want to add pagination or filters here
+        return view('stores.report', compact('stores'));
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to create store: ' . $e->getMessage());
+    }
+    }
+    public function inProgressStore()
+    {
+        try {
+        $stores = Store::where('register_status','in_proces')->get(); // You may want to add pagination or filters here
+        return view('stores.report', compact('stores'));
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to create store: ' . $e->getMessage());
+    }
+    }
 
+    public function view($id)
+    {
+        try {
+        $store = Store::find($id); // You may want to add pagination or filters here
+        return view('stores.view', compact('store'));
+    } catch (\Exception $e) {
+        return redirect()->back()->with('error', 'Failed to create store: ' . $e->getMessage());
+    }
+    }
     /**
      * Show the form for creating a new store.
      *
@@ -213,5 +258,31 @@ class StoreController extends Controller
             return redirect()->back()->with('error', 'Failed to delete store: ' . $e->getMessage());
         }
     }
-   
+    public function updateRegisterStatus(Request $request)
+    {
+        $request->validate([
+            'store_id' => 'required|exists:stores,id',
+            'register_status' => 'required|in:pending,rejected,complete,in_process',
+        ]);
+
+        $store = Store::findOrFail($request->store_id);
+        $store->register_status = $request->register_status;
+        $store->save();
+
+        return redirect()->back()->with('success', 'Register Status updated successfully.');
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'store_id' => 'required|exists:stores,id',
+            'status' => 'required|in:active,inactive',
+        ]);
+
+        $store = Store::findOrFail($request->store_id);
+        $store->status = $request->status;
+        $store->save();
+
+        return redirect()->back()->with('success', 'Store Status updated successfully.');
+    }
 }
