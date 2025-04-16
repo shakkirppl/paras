@@ -104,7 +104,75 @@ class StoreApiController extends Controller
             ], 500); // 500 is the HTTP status code for Internal Server Error
         }
     }
+    public function api_store_update(Request $request)
+    {
+        //  return $request->all();
+        // Validation
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+            'name' => 'required|string|max:255',
+            'user_id' => 'required|exists:users,id',
+            'district_id' => 'required|exists:districts,id',
+            'city_id'=> 'required|exists:cities,id',
+            'address' => 'nullable|string',
+            'latitude' => 'nullable|string',
+        ]);
 
+        if ($validator->fails()) {
+            // Return a JSON response with detailed validation errors
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Validation failed',
+                'errors' => $validator->errors() // This will include the details of which fields failed
+            ], 422);
+        }
+        $store = Store::find($request->id);
+        if( $file = $request->file('logo') ) {
+            $path = 'uploads/store';
+            $image = $this->file($file,$path,300,300);
+        }else{$image=$store->logo;}
+        try {
+            DB::transaction(function () use ($request,$image,&$store) {
+               
+                $store = Store::find($request->id);
+                $store->name = $request->name;
+                $store->district_id = $request->district_id;
+                $store->city_id = $request->city_id;
+                $store->logo = $image; // Handle file uploads if necessary
+                $store->email = $request->email;
+                $store->contact_no = $request->contact_no;
+                $store->whatsapp_no = $request->whatsapp_no;
+                $store->address = $request->address;
+                $store->town = $request->town;
+                $store->landmark = $request->landmark;
+                $store->latitude = $request->latitude;
+                $store->longitude = $request->longitude;
+                $store->description = $request->description;
+                $store->user_id = $request->user_id;
+                $store->save();
+
+               
+            });
+
+            if (!$store) {
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Data not found',
+                ], 404);
+            }
+            return response()->json([
+                'status' => 'success',
+                'data' => $store,
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Failed to create store: ' . $e->getMessage(),
+            ], 500); // 500 is the HTTP status code for Internal Server Error
+        }
+    }
+
+    
     public function approved(Request $request)
     {
         try {
