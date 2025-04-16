@@ -24,6 +24,7 @@
                   <th>Store Type</th>
                   <th>Store Classification</th>
                   <th>District</th>
+                  <th>Password</th>
                   <th>Status</th>
                   <th>Actions</th>
                 </tr>
@@ -36,6 +37,7 @@
                   <td>{{ $store->storeType->name ?? 'N/A' }}</td>
                   <td>{{ $store->storeClassification->name ?? 'N/A' }}</td>
                   <td>{{ $store->district->name ?? 'N/A' }}</td>
+                  <td>{{ $store->password }}</td>
                   <td>{{ ucfirst($store->status) }}</td>
                   <td>
                     <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-sm btn-warning">Edit</a>
