@@ -635,7 +635,7 @@ class StoreApiController extends Controller
     {
         try {
             // Fetch the store by its ID, including its relationships
-            $store = Store::with('Type', 'Classification')->find($request->store_id);
+            $store = Store::with('Type', 'Classification','district','city')->find($request->store_id);
         
             // Check if the store data exists
             if (is_null($store)) {

@@ -36,6 +36,14 @@ class Store extends Model
         
      return $this->hasMany(StoreTypes::class,'id','store_types_id')->select('id','code','name');
   }
+  public function district(){
+        
+     return $this->hasMany(Districts::class,'id','district_id')->select('id','name');
+  }
+  public function city(){
+        
+     return $this->hasMany(City::class,'id','city_id')->select('id','name');
+  }
   public function Classification(){
         
      return $this->hasMany(StoreClassifications::class,'id','store_classifications_id')->select('id','code','name');
