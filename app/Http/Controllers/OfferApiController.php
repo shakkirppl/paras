@@ -552,6 +552,33 @@ class OfferApiController extends Controller
             ], 500);
         }
     }
+    public function offer_delete(Request $request)
+{
+    try {
+        $offer = Offer::find($request->id);
+
+        if (!$offer) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Offer not found'
+            ], 404);
+        }
+
+        $offer->delete();
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Offer deleted successfully'
+        ], 200);
+
+    } catch (\Exception $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => 'An error occurred while deleting the offer',
+            'error' => $e->getMessage()
+        ], 500);
+    }
+}
     public function offer_inactive_count(Request $request)
     {
         try {

@@ -132,6 +132,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/get.offer.inactive', [OfferApiController::class, 'offer_inactive']);
     Route::get('/get.offer.inactive.count', [OfferApiController::class, 'offer_inactive_count']);
     Route::get('/offer.view', [OfferApiController::class, 'offer_view']);
+    Route::get('/offer-delete', [OfferApiController::class, 'offer_delete']);
+
+    
 
     // public login
 
