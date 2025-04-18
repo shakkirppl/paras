@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\SoftDeletes;
 class Offer extends Model
 {
      protected $fillable = ['code', 'title', 'offer_categories_id','start_date','end_date','district_id','store_subscription_end_date','user_id','store_id','image','short_description','highlight_title','categories_id','sub_categories_id','descount_percentage','in_date','description','tags','latitude','longitude','offer_like','offer_deslike','no_of_use','views','hot_deal','trending','promote','applicable_on'];  // Add 'code' here
-    use HasFactory;
+    use HasFactory,SoftDeletes;
     public function scopeRunning($query)
     {
         $today = Carbon::now()->toDateString();
@@ -108,4 +109,10 @@ class Offer extends Model
         
           return $this->hasMany(Store::class,'id','store_id')->select('id','code','name','logo');
        }
+    
+       public function adstore()
+{
+    return $this->belongsTo(Store::class, 'store_id', 'id')
+                ->select('id', 'code', 'name', 'logo');
+}
 }

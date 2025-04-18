@@ -19,6 +19,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OfferAddsController;
 use App\Http\Controllers\OtherTransactionController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\OfferController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -93,6 +94,14 @@ Route::middleware('auth')->group(function () {
     
     Route::post('offer-adds-product.store', [OfferAddsController::class, 'offer_adds_store'])->name('offer-adds-product.store');
     Route::get('offer-adds.remove/{id}', [OfferAddsController::class, 'show'])->name('offer-adds.remove');
+    
+    Route::get('offer-active', [OfferController::class, 'index_active']);
+    Route::get('offer-inactive', [OfferController::class, 'index_inactive']);
+    Route::get('offer-to_active/{id}', [OfferController::class, 'to_active']);
+    Route::get('offer-to_inactive/{id}', [OfferController::class, 'to_inactive']);
+    Route::get('offer-to_delete/{id}', [OfferController::class, 'to_delete']);
+
+    
     
     Route::post('products-sku.store', [ProductController::class, 'storeSku'])->name('products-sku.store');
     Route::delete('product-sku/{id}', [ProductController::class, 'destroySku'])->name('product-sku.destroy');

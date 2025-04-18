@@ -57,8 +57,9 @@
             </a>
             <div class="collapse" id="offer">
               <ul class="nav flex-column sub-menu">
-              <li class="nav-item"> <a class="nav-link" href="{{URL::to('offer-adds')}}"> Offer Adds</a></li>
-
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('offer-adds')}}"> Offer Type</a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('offer-active')}}">Active Offer </a></li>
+              <li class="nav-item"> <a class="nav-link" href="{{URL::to('offer-inactive')}}">In Active Offer </a></li>
 
              
               </ul>
