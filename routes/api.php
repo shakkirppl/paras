@@ -24,7 +24,7 @@ use App\Http\Controllers\StoreProductApiController;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+Route::post('/api-store.update', [StoreApiController::class, 'api_store_update']);
 Route::post('/login', [ApiAuthController::class, 'login']);
 Route::post('/customer.store', [CustomerApiController::class, 'customer_store']);
 Route::middleware('auth:sanctum')->group(function () {
@@ -99,7 +99,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
 
     Route::post('/api-store.store', [StoreApiController::class, 'api_store']);
-    Route::post('/api-store.update', [StoreApiController::class, 'api_store_update']);
+
     Route::get('/store.approved', [StoreApiController::class, 'approved']);
     Route::get('/store.all', [StoreApiController::class, 'all_store']);
     Route::get('/store.all.count', [StoreApiController::class, 'all_count']);
