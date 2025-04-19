@@ -34,13 +34,13 @@
                 <tr>
                   <td>{{ $store->code }}</td>
                   <td>{{ $store->name }}</td>
-                  <td>{{ $store->storeType->name ?? 'N/A' }}</td>
-                  <td>{{ $store->storeClassification->name ?? 'N/A' }}</td>
-                  <td>{{ $store->district->name ?? 'N/A' }}</td>
+                  <td>  @foreach($store->Type as $res) {{ $res->name ?? 'N/A' }}   @endforeach</td>
+                  <td>@foreach($store->Classification as $res) {{ $res->name ?? 'N/A' }}   @endforeach  </td>
+                  <td>@foreach($store->district as $res) {{ $res->name ?? 'N/A' }}   @endforeach </td>
                   <td>{{ $store->password }}</td>
                   <td>{{ ucfirst($store->status) }}</td>
                   <td>
-                    <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <!-- <a href="{{ route('stores.edit', $store->id) }}" class="btn btn-sm btn-warning">Edit</a> -->
                     <a href="{{ route('stores.view', $store->id) }}" class="btn btn-sm btn-primary">View</a>
                   </td>
                 </tr>

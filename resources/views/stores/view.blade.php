@@ -61,10 +61,37 @@
                 <tr>
                   <td>{{ $store->code }}</td>
                   <td>{{ $store->name }}</td>
-                  <td>{{ $store->storeType->name ?? 'N/A' }}</td>
-                  <td>{{ $store->storeClassification->name ?? 'N/A' }}</td>
-                  <td>{{ $store->district->name ?? 'N/A' }}</td>
+                  <td>@foreach($store->Type as $res) {{ $res->name ?? 'N/A' }}   @endforeach</td>
+                  <td>@foreach($store->Classification as $res) {{ $res->name ?? 'N/A' }} @endforeach</td>
+                  <td>@foreach($store->district as $res) {{ $res->name ?? 'N/A' }} @endforeach </td>
 
+                </tr>
+              
+              </tbody>
+            </table>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Contact No</th>
+                  <th>Whatsapp No</th>
+                  <th>Address</th>
+                  <th>Town</th>
+                  <th>Landmark</th>
+                 
+                 
+                </tr>
+              </thead>
+              <tbody>
+             
+
+                <tr>
+                  <td>{{ $store->contact_no }}</td>
+                  <td>{{ $store->whatsapp_no }}</td>
+                  <td>{{ $store->address }}</td>
+                  <td>{{ $store->town }}</td>
+                  <td>{{ $store->landmark}}</td>
+                
                 </tr>
               
               </tbody>
