@@ -62,7 +62,7 @@ class OfferApiController extends Controller
             $image = 'default.jpg';
             if ($request->hasFile('image')) {
                 $photo = $request->file('image');
-                $image = $this->file($photo[0], $path, 300, 300);
+                $image = $this->file($photo[0], $path, 600, 600);
             }
     
             // Create Offer
@@ -100,7 +100,7 @@ class OfferApiController extends Controller
     
             // Save Additional Images
             foreach ($photo as $photos) {
-                $mimage = $this->file($photos, $path, 300, 300);
+                $mimage = $this->file($photos, $path, 600, 600);
                 $offerAd=new OfferAdditionalImage;
                 $offerAd->offers_id=$newOffer->id;
                 $offerAd->store_id=$request->store_id;

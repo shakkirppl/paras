@@ -43,7 +43,7 @@ class SubCategoryController extends Controller
     
             if( $file = $request->file('image') ) {
                 $path = 'uploads/subcategory';
-                $image = $this->file($file,$path,300,300);
+                $image = $this->file($file,$path,600,600);
             }else{$image='defalut.jpg';}
         DB::transaction(function () use ($request,$image) {
         

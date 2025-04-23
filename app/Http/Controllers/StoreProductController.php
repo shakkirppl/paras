@@ -119,7 +119,7 @@ class StoreProductController extends Controller
         if ($request->hasFile('single_image')) {
             $file = $request->file('single_image');
             $path = 'uploads/products';
-            $singleImageName = $this->file($file,$path,300,300);
+            $singleImageName = $this->file($file,$path,600,600);
         }
         $productSku = TempProductSku::create([
             'product_id' => $request->product_id,
@@ -140,7 +140,7 @@ class StoreProductController extends Controller
         foreach ($request->file('multiple_images') as $image) {
             $file =  $image;
             $path = 'uploads/products';
-            $imageName = $this->file($file,$path,300,300);
+            $imageName = $this->file($file,$path,600,600);
             $multipleImages[] = $imageName;
         }
     }

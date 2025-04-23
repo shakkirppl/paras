@@ -81,7 +81,7 @@ class OfferAddsController extends Controller
             $image = $defaultImage;
             if ($file = $request->file('image')) {
                 $path = 'uploads/offer-adds';
-                $image = $this->file($file, $path, 150, 150); // Assuming `file` is a custom method for handling uploads
+                $image = $this->file($file, $path, 600, 600); // Assuming `file` is a custom method for handling uploads
             }
     
             // Create a new instance of the model and save
@@ -96,7 +96,7 @@ class OfferAddsController extends Controller
             if ($request->hasFile('additional_image')) {
                 foreach ($request->file('additional_image') as $image) {
                     $path = 'uploads/offer-adds';
-                    $imageName = $this->file($image, $path, 150, 150);
+                    $imageName = $this->file($image, $path, 600, 600);
         
                     // Save to database if needed
                      $additionalImage=new AdditionalImage;
