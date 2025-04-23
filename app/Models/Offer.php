@@ -89,7 +89,7 @@ class Offer extends Model
     {
          return $query->where('user_id',$user);
     }
-    public function scopeStore($query,$store)
+    public function scopeCuStore($query,$store)
     {
          return $query->where('store_id',$store);
     }

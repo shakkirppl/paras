@@ -361,7 +361,7 @@ class OfferApiController extends Controller
     {
         try {
             // Fetch count of stores that are complete and active for the given user
-            $resultsCount = Offer::Store($request->store_id)->count();
+            $resultsCount = Offer::CuStore($request->store_id)->count();
             
             // Check if any stores exist
             if ($resultsCount === 0) {
@@ -426,7 +426,7 @@ class OfferApiController extends Controller
     {
         try {
             // Fetch count of stores that are complete and active for the given user
-            $resultsCount = Offer::Store($request->store_id)->Active()->NonVerified()->count();
+            $resultsCount = Offer::CuStore($request->store_id)->Active()->NonVerified()->count();
             
             // Check if any stores exist
             if ($resultsCount === 0) {
@@ -491,7 +491,7 @@ class OfferApiController extends Controller
     {
         try {
             // Fetch count of stores that are complete and active for the given user
-            $resultsCount = Offer::Store($request->store_id)->Active()->Rejected()->count();
+            $resultsCount = Offer::CuStore($request->store_id)->Active()->Rejected()->count();
             
             // Check if any stores exist
             if ($resultsCount === 0) {
@@ -583,7 +583,7 @@ class OfferApiController extends Controller
     {
         try {
             // Fetch count of stores that are complete and active for the given user
-            $resultsCount = Offer::Store($request->store_id)->InActive()->count();
+            $resultsCount = Offer::CuStore($request->store_id)->InActive()->count();
             
             // Check if any stores exist
             if ($resultsCount === 0) {
